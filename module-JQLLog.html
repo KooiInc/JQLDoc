@@ -157,7 +157,7 @@
 
         
             
-<h4 class="name" id="~debugLog"><span class="type-signature">(inner, constant) </span>debugLog<span class="type-signature"></span></h4>
+<h4 class="name" id="~debugLog"><span class="type-signature">(inner, constant) </span>debugLog<span class="type-signature"> :object</span></h4>
 
 
 
@@ -168,7 +168,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="JQLLog.js.html">JQLLog.js</a>, <a href="JQLLog.js.html#line109">line 109</a>
+        <a href="JQLLog.js.html">JQLLog.js</a>, <a href="JQLLog.js.html#line30">line 30</a>
     </li></ul></dd>
     
 
@@ -231,7 +231,7 @@
 
         <tr>
             
-                <td class="name"><code>isVisible</code></td>
+                <td class="name"><code>debugLog.isVisible</code></td>
             
 
             <td class="type">
@@ -254,7 +254,7 @@
 
         <tr>
             
-                <td class="name"><code>on</code></td>
+                <td class="name"><code>debugLog.on</code></td>
             
 
             <td class="type">
@@ -277,7 +277,7 @@
 
         <tr>
             
-                <td class="name"><code>off</code></td>
+                <td class="name"><code>debugLog.off</code></td>
             
 
             <td class="type">
@@ -300,7 +300,7 @@
 
         <tr>
             
-                <td class="name"><code>hide</code></td>
+                <td class="name"><code>debugLog.hide</code></td>
             
 
             <td class="type">
@@ -323,7 +323,7 @@
 
         <tr>
             
-                <td class="name"><code>show</code></td>
+                <td class="name"><code>debugLog.show</code></td>
             
 
             <td class="type">
@@ -346,7 +346,7 @@
 
         <tr>
             
-                <td class="name"><code>toConsole</code></td>
+                <td class="name"><code>debugLog.toConsole</code></td>
             
 
             <td class="type">
@@ -362,14 +362,14 @@
 
             
 
-            <td class="description last">Log to console.</td>
+            <td class="description last">Log to console (see <a href="#~debugLog%255BtoConsole%255D">debugLog[toConsole]</a>).</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>reversed</code></td>
+                <td class="name"><code>debugLog.reversed</code></td>
             
 
             <td class="type">
@@ -385,14 +385,14 @@
 
             
 
-            <td class="description last">Log top to bottom (false) or latest first (default true).</td>
+            <td class="description last">Log top to bottom or latest first (see <a href="#~debugLog%255Breversed%255D">debugLog[reversed]</a>).</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>clear</code></td>
+                <td class="name"><code>debugLog.clear</code></td>
             
 
             <td class="type">
@@ -415,7 +415,7 @@
 
         <tr>
             
-                <td class="name"><code>(getter)</code></td>
+                <td class="name"><code>debugLog.isOn</code></td>
             
 
             <td class="type">
@@ -431,7 +431,7 @@
 
             
 
-            <td class="description last">isOn is logging on?</td>
+            <td class="description last">(getter) is logging on?</td>
         </tr>
 
     
@@ -444,73 +444,20 @@
 
 
 <div class="description usertext">
-    Use logging for debug (set on/off or show/hide the JQLLog box).
+    Helpers for logging
 </div>
 
 
 
-
-
-
-
-
-        
+    <h5>Type:</h5>
+    <ul>
+        <li>
             
-<h4 class="name" id="~defaultStyling"><span class="type-signature">(inner) </span>defaultStyling<span class="type-signature"></span></h4>
+<span class="param-type">object</span>
 
 
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="JQLLog.js.html">JQLLog.js</a>, <a href="JQLLog.js.html#line15">line 15</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description usertext">
-    defaultStyling is the styling used for a the box used for logging (a <code>HTMLFieldSetElement</code> element).May be overridden by your own styles, but must use the id <code>#logBox</code>.
-</div>
-
-
+        </li>
+    </ul>
 
 
 
@@ -540,7 +487,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="JQLLog.js.html">JQLLog.js</a>, <a href="JQLLog.js.html#line142">line 142</a>
+        <a href="JQLLog.js.html">JQLLog.js</a>, <a href="JQLLog.js.html#line63">line 63</a>
     </li></ul></dd>
     
 
@@ -580,7 +527,7 @@
 
 
 <div class="description usertext">
-    <code>debugLog.reversed([true, false])</code><br>Change direction of log entries
+    Change direction of log entries<br>Exposed as: <code>debugLog.reversed</code>
 </div>
 
 
@@ -676,7 +623,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="JQLLog.js.html">JQLLog.js</a>, <a href="JQLLog.js.html#line127">line 127</a>
+        <a href="JQLLog.js.html">JQLLog.js</a>, <a href="JQLLog.js.html#line48">line 48</a>
     </li></ul></dd>
     
 
@@ -716,7 +663,7 @@
 
 
 <div class="description usertext">
-    <code>debugLog.toConsole([true, false])</code><br>log everything to console<br><b>Note</b>: this possibly destroys an alreay created<code>div#logBox</code> in the document if set to true.
+    Log everything to thje browser console<br>Exposed as: <code>debugLog.toConsole</code><br><b>Note</b>: this possibly destroys an alreay created<code>div#logBox</code> in the document if set to true.
 </div>
 
 
@@ -770,7 +717,7 @@
 
             
 
-            <td class="description last">latest last (false) or latest first (true) (default true)</td>
+            <td class="description last">log to browser console (true) or not (false, default)</td>
         </tr>
 
     
@@ -812,7 +759,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="JQLLog.js.html">JQLLog.js</a>, <a href="JQLLog.js.html#line186">line 186</a>
+        <a href="JQLLog.js.html">JQLLog.js</a>, <a href="JQLLog.js.html#line182">line 182</a>
     </li></ul></dd>
     
 
@@ -963,7 +910,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="JQLLog.js.html">JQLLog.js</a>, <a href="JQLLog.js.html#line83">line 83</a>
+        <a href="JQLLog.js.html">JQLLog.js</a>, <a href="JQLLog.js.html#line149">line 149</a>
     </li></ul></dd>
     
 
@@ -1057,7 +1004,7 @@
 
             
 
-            <td class="description last">style rules Object, e.g. <code>&#123;margin: `0`, color: `green`&#125;</code>.Default styles are in <code>defaultStyling</code></td>
+            <td class="description last">style rules Object, e.g. <code>&#123;margin: `0`, color: `green`&#125;</code>.Default styles are in <code>stylingDefault4Log</code></td>
         </tr>
 
     
@@ -1125,7 +1072,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Tue Oct 26 2021 14:29:49 GMT+0200 (Midden-Europese zomertijd) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Tue Oct 26 2021 15:28:15 GMT+0200 (Midden-Europese zomertijd) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
