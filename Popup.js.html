@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>Popup.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-Attributes.html">Attributes</a></li><li><a href="module-DOM.html">DOM</a><ul class='methods'><li data-type='method'><a href="module-DOM.html#~createElementFromHtmlString">createElementFromHtmlString</a></li><li data-type='method'><a href="module-DOM.html#~element2DOM">element2DOM</a></li></ul></li><li><a href="module-HandlerFactory.html">HandlerFactory</a><ul class='methods'><li data-type='method'><a href="module-HandlerFactory.html#~addListenerIfNotExisting">addListenerIfNotExisting</a></li><li data-type='method'><a href="module-HandlerFactory.html#~createHandlerForHID">createHandlerForHID</a></li><li data-type='method'><a href="module-HandlerFactory.html#~metaHandler">metaHandler</a></li></ul></li><li><a href="module-Helpers.html">Helpers</a><ul class='methods'><li data-type='method'><a href="module-Helpers.html#~createRegExp">createRegExp</a></li><li data-type='method'><a href="module-Helpers.html#~frequencies">frequencies</a></li><li data-type='method'><a href="module-Helpers.html#~groupDigits">groupDigits</a></li><li data-type='method'><a href="module-Helpers.html#~hasDuplicatesForKeys">hasDuplicatesForKeys</a></li><li data-type='method'><a href="module-Helpers.html#~isEven">isEven</a></li><li data-type='method'><a href="module-Helpers.html#~isObjectAndNotArray">isObjectAndNotArray</a></li><li data-type='method'><a href="module-Helpers.html#~repeat">repeat</a></li><li data-type='method'><a href="module-Helpers.html#~time">time</a></li><li data-type='method'><a href="module-Helpers.html#~time2Fragments">time2Fragments</a></li><li data-type='method'><a href="module-Helpers.html#~toDashedNotation">toDashedNotation</a></li><li data-type='method'><a href="module-Helpers.html#~toUndashedNotation">toUndashedNotation</a></li><li data-type='method'><a href="module-Helpers.html#~truncateHtmlStr">truncateHtmlStr</a></li></ul></li><li><a href="module-HtmlCleanup.html">HtmlCleanup</a><ul class='methods'><li data-type='method'><a href="module-HtmlCleanup.html#~logElementCreationErrors">logElementCreationErrors</a></li><li data-type='method'><a href="module-HtmlCleanup.html#~setTagPermission">setTagPermission</a></li></ul></li><li><a href="module-HtmlTags.html">HtmlTags</a><ul class='methods'><li data-type='method'><a href="module-HtmlTags.html#.isAllowed">isAllowed</a></li><li data-type='method'><a href="module-HtmlTags.html#~setTagPermission">setTagPermission</a></li></ul></li><li><a href="module-JQL.html">JQL</a><ul class='methods'><li data-type='method'><a href="module-JQL.html#~ExtendedNodeList">ExtendedNodeList</a></li><li data-type='method'><a href="module-JQL.html#~node">node</a></li><li data-type='method'><a href="module-JQL.html#~nodes">nodes</a></li><li data-type='method'><a href="module-JQL.html#~setStyle">setStyle</a></li><li data-type='method'><a href="module-JQL.html#~setSystemLogActiveState">setSystemLogActiveState</a></li><li data-type='method'><a href="module-JQL.html#~virtual">virtual</a></li></ul></li><li><a href="module-JQLCollectionExtensions.html">JQLCollectionExtensions</a><ul class='methods'><li data-type='method'><a href="module-JQLCollectionExtensions.html#~addClass">addClass</a></li><li data-type='method'><a href="module-JQLCollectionExtensions.html#~assignAttrValues">assignAttrValues</a></li><li data-type='method'><a href="module-JQLCollectionExtensions.html#~attr">attr</a></li><li data-type='method'><a href="module-JQLCollectionExtensions.html#~clear">clear</a></li><li data-type='method'><a href="module-JQLCollectionExtensions.html#~css">css</a></li><li data-type='method'><a href="module-JQLCollectionExtensions.html#~empty">empty</a></li><li data-type='method'><a href="module-JQLCollectionExtensions.html#~hide">hide</a></li><li data-type='method'><a href="module-JQLCollectionExtensions.html#~remove">remove</a></li><li data-type='method'><a href="module-JQLCollectionExtensions.html#~removeAttr">removeAttr</a></li><li data-type='method'><a href="module-JQLCollectionExtensions.html#~removeClass">removeClass</a></li><li data-type='method'><a href="module-JQLCollectionExtensions.html#~replaceClass">replaceClass</a></li><li data-type='method'><a href="module-JQLCollectionExtensions.html#~setData">setData</a></li><li data-type='method'><a href="module-JQLCollectionExtensions.html#~show">show</a></li><li data-type='method'><a href="module-JQLCollectionExtensions.html#~style">style</a></li><li data-type='method'><a href="module-JQLCollectionExtensions.html#~toggleAttr">toggleAttr</a></li><li data-type='method'><a href="module-JQLCollectionExtensions.html#~toggleClass">toggleClass</a></li><li data-type='method'><a href="module-JQLCollectionExtensions.html#~toggleStyleFragments">toggleStyleFragments</a></li></ul></li><li><a href="module-JQLExtensionHelpers.html">JQLExtensionHelpers</a><ul class='methods'><li data-type='method'><a href="module-JQLExtensionHelpers.html#~getAllDataAttributeValues">getAllDataAttributeValues</a></li><li data-type='method'><a href="module-JQLExtensionHelpers.html#~hex2Full">hex2Full</a></li><li data-type='method'><a href="module-JQLExtensionHelpers.html#~hex2RGBA">hex2RGBA</a></li><li data-type='method'><a href="module-JQLExtensionHelpers.html#~initializePrototype">initializePrototype</a></li><li data-type='method'><a href="module-JQLExtensionHelpers.html#~isVisible">isVisible</a></li><li data-type='method'><a href="module-JQLExtensionHelpers.html#~loop">loop</a></li></ul></li><li><a href="module-JQLExtensions.html">JQLExtensions</a><ul class='methods'><li data-type='method'><a href="module-JQLExtensions.html#~append">append</a></li><li data-type='method'><a href="module-JQLExtensions.html#~appendTo">appendTo</a></li><li data-type='method'><a href="module-JQLExtensions.html#~computedStyle">computedStyle</a></li><li data-type='method'><a href="module-JQLExtensions.html#~delegate">delegate</a></li><li data-type='method'><a href="module-JQLExtensions.html#~dimensions">dimensions</a></li><li data-type='method'><a href="module-JQLExtensions.html#~each">each</a></li><li data-type='method'><a href="module-JQLExtensions.html#~find">find</a></li><li data-type='method'><a href="module-JQLExtensions.html#~find$">find$</a></li><li data-type='method'><a href="module-JQLExtensions.html#~first">first</a></li><li data-type='method'><a href="module-JQLExtensions.html#~first$">first$</a></li><li data-type='method'><a href="module-JQLExtensions.html#~getData">getData</a></li><li data-type='method'><a href="module-JQLExtensions.html#~hasClass">hasClass</a></li><li data-type='method'><a href="module-JQLExtensions.html#~html">html</a></li><li data-type='method'><a href="module-JQLExtensions.html#~htmlFor">htmlFor</a></li><li data-type='method'><a href="module-JQLExtensions.html#~insert">insert</a></li><li data-type='method'><a href="module-JQLExtensions.html#~is">is</a></li><li data-type='method'><a href="module-JQLExtensions.html#~isEmpty">isEmpty</a></li><li data-type='method'><a href="module-JQLExtensions.html#~on">on</a></li><li data-type='method'><a href="module-JQLExtensions.html#~ON">ON</a></li><li data-type='method'><a href="module-JQLExtensions.html#~outerHtml">outerHtml</a></li><li data-type='method'><a href="module-JQLExtensions.html#~parent">parent</a></li><li data-type='method'><a href="module-JQLExtensions.html#~prop">prop</a></li><li data-type='method'><a href="module-JQLExtensions.html#~remove">remove</a></li><li data-type='method'><a href="module-JQLExtensions.html#~replace">replace</a></li><li data-type='method'><a href="module-JQLExtensions.html#~replaceMe">replaceMe</a></li><li data-type='method'><a href="module-JQLExtensions.html#~single">single</a></li><li data-type='method'><a href="module-JQLExtensions.html#~text">text</a></li><li data-type='method'><a href="module-JQLExtensions.html#~val">val</a></li></ul></li><li><a href="module-JQLLog.html">JQLLog</a><ul class='methods'><li data-type='method'><a href="module-JQLLog.html#.debugLog%255Breversed%255D">debugLog[reversed]</a></li><li data-type='method'><a href="module-JQLLog.html#.debugLog%255BtoConsole%255D">debugLog[toConsole]</a></li><li data-type='method'><a href="module-JQLLog.html#~Log">Log</a></li><li data-type='method'><a href="module-JQLLog.html#~setStyling4Log">setStyling4Log</a></li></ul></li><li><a href="module-Popup.html">Popup</a><ul class='methods'><li data-type='method'><a href="module-Popup.html#~popupFactory">popupFactory</a></li><li data-type='method'><a href="module-Popup.html#~popupFactory_create">popupFactory_create</a></li><li data-type='method'><a href="module-Popup.html#~popupFactory_createTimed">popupFactory_createTimed</a></li><li data-type='method'><a href="module-Popup.html#~popupFactory_remove">popupFactory_remove</a></li><li data-type='method'><a href="module-Popup.html#~popupFactory_removeModal">popupFactory_removeModal</a></li></ul></li><li><a href="module-Styling.html">Styling</a><ul class='methods'><li data-type='method'><a href="module-Styling.html#~changeCssStyleRule">changeCssStyleRule</a></li></ul></li></ul><h3><a href="global.html">Global</a></h3>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">Popup.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// noinspection JSUnresolvedVariable
+
+/**
+ * a small library to create/use (modal) popups
+ * @module Popup
+ * @exports Popup/popupFactory
+ */
+export default popupFactory;
+
+/**
+ * The JQLLike library as type (for documentation). See [module JQL]{@link module:JQL~ExtendedNodeList}
+ * @typedef {function(...[*]): ExtendedNodeList} ExtendedNodeList
+ */
+
+/**
+ * This factory delivers 4 methods to create or remove a (modal) popup window in the browser.&lt;ul>
+ *   &lt;li>[create]{@link module:Popup~popupFactory_create}
+ *   &lt;li>[createTimed]{@link module:Popup~popupFactory_createTimed}
+ *   &lt;li>[remove]{@link module:Popup~popupFactory_remove}
+ *   &lt;li>[removeModal]{@link module:Popup~popupFactory_removeModal}&lt;/ul>
+ *  All popups are modal (the background page is inactivated until the popup is closed).
+ *  A normal popup can be closed by clicking a small icon or outside the box.
+ *  A 'really modal' popup can only be closed using a handler you define yourself.
+ * @param $ {ExtendedNodeList} JQLike constructor
+ * @returns {{removeFromModal: removeFromModal, create: (function(*=, *=, *=)), remove: ((function(*): (undefined|*))|*), createTimed: createTimed}}
+ */
+function popupFactory($) {
+  initStyling($.setStyle);
+  let savedTimer, savedCallback;
+  const stillOpen = () => {
+    alert(`A modal window is still open, make sure it is closed first!`);
+    return true;
+  }
+  const currentModalState = {
+    currentPopupIsModal: false,
+    set isModal(tf) { this.currentPopupIsModal = tf; },
+    get isModal() { return this.currentPopupIsModal; },
+    isModalActive() { return this.currentPopupIsModal &amp;&amp; popupBox.hasClass(`active`) &amp;&amp; stillOpen() },
+  }
+  const wrappedBody = $(document.body);
+  const positionCloserHandle = () => {
+    if (!closer.hasClass(`active`)) { return; }
+    const [modalDim, iconDim]  = [popupBox.dimensions(),  closer.dimensions()];
+    closer.styleInline({
+      position: `fixed`,
+      top: `${modalDim.top - (iconDim.height/2)}px`,
+      left: `${modalDim.right - (iconDim.width/2)}px`,
+    });
+  };
+  const createElements = _ => {
+    const popupBox =
+      $(`&lt;div class="popupBox">
+         &lt;div data-modalcontent>&lt;/div>
+       &lt;/div>`);
+    const closer = $(`&lt;span id="closer" class="closeHandleIcon">&lt;/span>`)
+      .prop(`title`, `Click here or anywhere outside the box to close`);
+    const between = $(`&lt;div class="between">&lt;/div>`);
+    const resizeObserver = new ResizeObserver(positionCloserHandle);
+    resizeObserver.observe(popupBox.first());
+    resizeObserver.observe(wrappedBody.first());
+    return [popupBox, between, closer,];
+  };
+  const [popupBox, between, closer] = createElements();
+  const clickOrTouch =  "ontouchstart" in document.documentElement ? "touchend" : "click";
+  const checkActiveModal = () => currentModalState.isReallyModal &amp;&amp; popupBox.hasClass(`active`) &amp;&amp; stillOpen();
+  const hideModal = () => {
+    $(`#closer, .between, .popupBox`).removeClass(`active`);
+  };
+  const activate = (theBox, closeHndl) => {
+    $(`.between, .popupBox`).addClass(`active`);
+    popupBox.styleInline({height: `auto`, width: `auto`});
+    const [betweenH, bodyDim] = [between.dimensions().height, wrappedBody.addClass(`popupActive`).dimensions()];
+    between.styleInline( {bottom: betweenH &lt;= bodyDim.height ? `-${bodyDim.bottom}px` : 0 } );
+
+    if (closeHndl) {
+      closeHndl.addClass(`active`);
+      positionCloserHandle();
+    }
+  };
+  const endTimer = () => savedTimer &amp;&amp; clearTimeout(savedTimer);
+
+  /**
+   * Create a popup from a string or JQLike instance. If [reallyModal] is true
+   * the popup can only be closed using a method you create (e.g. a button click
+   * within the popup). A callback can be used to execute after closing the popup.
+   * &lt;br>Exposed as &lt;code>[popup].create&lt;/code>
+   * &lt;br>&lt;b>Note&lt;/b> if a 'really modal' popup is open, you can't create a new popup
+   * @example
+   * // assuming 'popup' as name for the (imported and) initialized popupFactory
+   * // and JQLike is imported as '$'
+   * // ----
+   * // plain or html string
+   * popup.create(`Hello world`);
+   * popup.create(`&lt;p>Hello world&lt;/p>`);
+   * // an ExtendedNodelist instance
+   * popup.create($(`&lt;p>Hello world&lt;/p>`));
+   * // a really modal popup
+   * const button4Modal = $(`&lt;button>Click me to close!&lt;/button>`)
+   *    .on(`click`, popup.removeModal(() => popup.createTimed(`&lt;p>Goodbye!&lt;/p>`, 2));
+   * popup.create(button4Modal, true);
+   * // a popup with a callback
+   * popup.create(`&lt;p>Hello world&lt;/p>`, false, () => popup.create(`&lt;p>Goodbye!&lt;/p>`);
+   * @name popupFactory_create
+   * @function
+   * @param message {string | ExtendedNodeList} a (html) string or a JQLike instance
+   * @param reallyModal {boolean} allow default closing behavior or not
+   * @param callback {function} a callback lambda to execute after closing the popup
+   */
+  const doCreate = (message, reallyModal, callback) => {
+    currentModalState.isModal = reallyModal;
+    savedCallback = callback;
+
+    if (!message.isJQL &amp;&amp; message.constructor !== String) {
+      return createTimed($(`&lt;b style="color:red">Modal not created: invalid input&lt;/b>`), 2);    }
+
+    endTimer();
+    popupBox.find$(`[data-modalcontent]`)
+      .empty()
+      .append( message.isJQL ? message : $(`&lt;div>${message}&lt;/div>`) );
+    activate(popupBox, currentModalState.isModal ? undefined : closer);
+  }
+
+  const create = (message, reallyModal = false, callback) =>
+    !currentModalState.isModalActive() &amp;&amp; doCreate(message, reallyModal, callback);
+
+  /**
+   * Create a popup that closes automatically after [closeAfter] seconds
+   * &lt;br>Exposed as &lt;code>[popup].createTimed&lt;/code>
+   * &lt;br>&lt;b>Note&lt;/b> if a 'really modal' popup is open, you can't create a new popup
+   * @name popupFactory_createTimed
+   * @function
+   * @param message {string | ExtendedNodeList} a (html) string or a JQLike instance
+   * @param closeAfter {number} the time (seconds, default 2) after which the popup should close
+   * @param callback {function} a callback lambda to execute after the popup is closed
+   */
+  const createTimed = (message, closeAfter = 2, callback = null ) => {
+    if (currentModalState.isModalActive()) { return; }
+    hideModal();
+    create(message);
+    const remover = callback ? () => remove(callback) : remove;
+    savedTimer = setTimeout(remover, closeAfter * 1000);
+  };
+
+  /**
+   * Remove a popup
+   * &lt;br>Exposed as &lt;code>[popup].remove&lt;/code>
+   * &lt;br>&lt;b>Note&lt;/b> if the popup is 'really modal', you can't remove it with this,
+   * use &lt;code>popup.removeModal&lt;/code> for that.
+   * @name popupFactory_remove
+   * @function
+   * @param callback {function|event|undefined} an event (if closed by a click delegate),
+   * or a callback lambda to execute after the popup is closed (e.g. passed by
+   * &lt;code>popup.createTimed&lt;/code>. May be empty.
+   */
+  const remove = evtOrCallback => {
+    endTimer();
+
+    if (currentModalState.isModalActive()) { return; }
+
+    const callback = evtOrCallback instanceof Function ? evtOrCallback : savedCallback;
+
+    if (callback &amp;&amp; callback instanceof Function) {
+      savedCallback = undefined;
+      return callback();
+    }
+
+    hideModal();
+    const time2Wait = parseFloat(popupBox.computedStyle(`transitionDuration`)) * 1000;
+    savedTimer = setTimeout(() => wrappedBody.removeClass(`popupActive`), time2Wait);
+  };
+
+  /**
+   * Remove a really modal popup
+   * &lt;br>Exposed as &lt;code>[popup].removeModal&lt;/code>
+   * @name popupFactory_removeModal
+   * @function
+   * @param callback {function|undefined} a callback lambda to execute after the popup is closed, may
+   * be empty
+   */
+  const removeModal = callback => {
+    currentModalState.isModal = false;
+    remove(callback);
+  };
+
+  $().delegate( clickOrTouch, `#closer, .between`,  remove );
+
+  return {
+    create,
+    createTimed,
+    remove,
+    removeModal,
+  };
+}
+
+function initStyling(setStyle) {
+  const styling = {
+    'body.popupActive': {
+      overflow: `hidden`,
+      transition: 'all linear 0.6s 0s',
+    },
+    '.between': {
+      position: 'absolute',
+      zIndex: '-1',
+      left: '0',
+      right: '0',
+      top: '0',
+      bottom: '0',
+      margin: '0',
+      overflow: 'hidden',
+      backgroundColor: 'white',
+      opacity: 0,
+      transition: 'all linear 0.3s',
+    },
+    '.between.active': {
+      zIndex: 2,
+      opacity: 0.5,
+    },
+    '.popupBox': {
+      position: 'fixed',
+      maxWidth: '30vw',
+      maxHeight: '40vh',
+      backgroundColor: 'white',
+      boxShadow: '3px 2px 12px #777',
+      borderRadius: '6px',
+      zIndex: -1,
+      opacity: '0',
+      overflow: `auto`,
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      transition: 'opacity linear 0.6s',
+      font: 'normal 13px/17px Verdana, Arial, sans-serif',
+    },
+    '.popupBox.active': {
+      zIndex: 3,
+      opacity: '1',
+      resize: `both`,
+    },
+    "@media screen and (min-width: 320px) and (max-width: 1200px)": {
+      mediaSelectors: {
+        ".popupBox": {
+          maxWidth: `75vw`,
+          maxHeight: `30vh`,
+        },
+
+      }
+    },
+    '.popupBox div[data-modalcontent]': {
+      minHeight: `1rem`,
+      maxHeight: 'inherit',
+      clear: 'both',
+      // padding: '8px'
+    },
+    '.popupBox p, .popupBox div': { margin: '0.4rem 0', padding: `0 6px` },
+    '.popupBox p:nth-child(1), .popupBox div:nth-child(1)': { margin: '1rem 0' },
+    '.popupBox h3': { marginBottom: '0.5em', fontSize: '1.1em' },
+    '.closeHandleIcon': {
+      position: `fixed`,
+      cursor: 'pointer',
+      zIndex: -1,
+      opacity: 0,
+      width: '32px',
+      height: '32px',
+      background: "url('data:image/svg+xml;utf8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22iso-8859-1%22%3F%3E%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20version%3D%221.1%22%20id%3D%22Layer_1%22%20x%3D%220px%22%20y%3D%220px%22%20viewBox%3D%220%200%20128%20128%22%20style%3D%22enable-background%3Anew%200%200%20128%20128%3B%22%20xml%3Aspace%3D%22preserve%22%3E%3Crect%20x%3D%22-368%22%20y%3D%226%22%20style%3D%22display%3Anone%3Bfill%3A%23E0E0E0%3B%22%20width%3D%22866%22%20height%3D%221018%22%2F%3E%3Ccircle%20style%3D%22fill%3A%23FFFFFF%3B%22%20cx%3D%2264%22%20cy%3D%2264%22%20r%3D%2248%22%2F%3E%3Ccircle%20style%3D%22fill%3A%238CCFB9%3B%22%20cx%3D%2264%22%20cy%3D%2264%22%20r%3D%2239%22%2F%3E%3Ccircle%20style%3D%22fill%3Anone%3Bstroke%3A%23444B54%3Bstroke-width%3A6%3Bstroke-miterlimit%3A10%3B%22%20cx%3D%2264%22%20cy%3D%2264%22%20r%3D%2248%22%2F%3E%3Cpolyline%20style%3D%22fill%3Anone%3Bstroke%3A%23FFFFFF%3Bstroke-width%3A6%3Bstroke-linecap%3Around%3Bstroke-miterlimit%3A10%3B%22%20points%3D%2242%2C69%2055.55%2C81%20%20%2086%2C46%20%22%2F%3E%3C%2Fsvg%3E') no-repeat"
+    },
+    '.closeHandleIcon.active': {
+      zIndex: 4,
+      opacity: 1,
+    }
+  };
+  Object.entries(styling).forEach( ([selector, rules]) => setStyle(selector, rules, `modalCss`));
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Tue Nov 23 2021 13:39:41 GMT+0100 (Midden-Europese standaardtijd) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>
