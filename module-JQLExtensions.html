@@ -748,7 +748,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="JQLExtensions.js.html">JQLExtensions.js</a>, <a href="JQLExtensions.js.html#line619">line 619</a>
+        <a href="JQLExtensions.js.html">JQLExtensions.js</a>, <a href="JQLExtensions.js.html#line642">line 642</a>
     </li></ul></dd>
     
 
@@ -1011,7 +1011,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="JQLExtensions.js.html">JQLExtensions.js</a>, <a href="JQLExtensions.js.html#line608">line 608</a>
+        <a href="JQLExtensions.js.html">JQLExtensions.js</a>, <a href="JQLExtensions.js.html#line631">line 631</a>
     </li></ul></dd>
     
 
@@ -1168,7 +1168,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="JQLExtensions.js.html">JQLExtensions.js</a>, <a href="JQLExtensions.js.html#line423">line 423</a>
+        <a href="JQLExtensions.js.html">JQLExtensions.js</a>, <a href="JQLExtensions.js.html#line446">line 446</a>
     </li></ul></dd>
     
 
@@ -1208,7 +1208,7 @@
 
 
 <div class="description usertext">
-    Duplicate an ExtendedNodeList instance (to memory (default) orto DOM.
+    Duplicate an ExtendedNodeList instance (to memory (default) orto DOM. The elements within the instance are cloned (and their id's removed)and the resulting <code>NodeList</code> is converted to a new instance.<br><b>Note</b> check the cloned nodes classList/properties/attributes: you may wantto change them before injecting to DOM.
 </div>
 
 
@@ -1217,6 +1217,11 @@
 
 
 
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>import $ from "JQueryLike.js";const someElem = Object.assign(   document.createElement(`div`),   {innerHTML: `hello`, className: `someClass` });$.setStyle(`.someClass`, {color: `brown`});$( [...Array(2)].map(_ => someElem.cloneNode(true) ) ) .append(document.createTextNode(` world!`)) .prepend(document.createTextNode(`We say: `)) .each(el =>   el.setAttribute(`id`, `_${ Math.floor(10000 + Math.random() * 10000).toString(16)}` )) // elements are injected to DOM. Now continue with a duplicate .duplicate(true) .removeClass(`someClass`) .text(` That's right folks. Bye!`, true); // output &lt;div class="someClass" id="_2f03">We say: hello world!&lt;/div> &lt;div class="someClass" id="_413b">We say: hello world!&lt;/div> &lt;div class>We say: hello world! That's right folks. Bye!&lt;/div> &lt;div class>We say: hello world! That's right folks. Bye!&lt;/div></code></pre>
 
 
 
@@ -1453,7 +1458,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="JQLExtensions.js.html">JQLExtensions.js</a>, <a href="JQLExtensions.js.html#line477">line 477</a>
+        <a href="JQLExtensions.js.html">JQLExtensions.js</a>, <a href="JQLExtensions.js.html#line500">line 500</a>
     </li></ul></dd>
     
 
@@ -1633,7 +1638,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="JQLExtensions.js.html">JQLExtensions.js</a>, <a href="JQLExtensions.js.html#line488">line 488</a>
+        <a href="JQLExtensions.js.html">JQLExtensions.js</a>, <a href="JQLExtensions.js.html#line511">line 511</a>
     </li></ul></dd>
     
 
@@ -1817,7 +1822,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="JQLExtensions.js.html">JQLExtensions.js</a>, <a href="JQLExtensions.js.html#line451">line 451</a>
+        <a href="JQLExtensions.js.html">JQLExtensions.js</a>, <a href="JQLExtensions.js.html#line474">line 474</a>
     </li></ul></dd>
     
 
@@ -2016,7 +2021,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="JQLExtensions.js.html">JQLExtensions.js</a>, <a href="JQLExtensions.js.html#line468">line 468</a>
+        <a href="JQLExtensions.js.html">JQLExtensions.js</a>, <a href="JQLExtensions.js.html#line491">line 491</a>
     </li></ul></dd>
     
 
@@ -2613,7 +2618,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="JQLExtensions.js.html">JQLExtensions.js</a>, <a href="JQLExtensions.js.html#line549">line 549</a>
+        <a href="JQLExtensions.js.html">JQLExtensions.js</a>, <a href="JQLExtensions.js.html#line572">line 572</a>
     </li></ul></dd>
     
 
@@ -2826,7 +2831,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="JQLExtensions.js.html">JQLExtensions.js</a>, <a href="JQLExtensions.js.html#line585">line 585</a>
+        <a href="JQLExtensions.js.html">JQLExtensions.js</a>, <a href="JQLExtensions.js.html#line608">line 608</a>
     </li></ul></dd>
     
 
@@ -3407,7 +3412,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="JQLExtensions.js.html">JQLExtensions.js</a>, <a href="JQLExtensions.js.html#line527">line 527</a>
+        <a href="JQLExtensions.js.html">JQLExtensions.js</a>, <a href="JQLExtensions.js.html#line550">line 550</a>
     </li></ul></dd>
     
 
@@ -3611,7 +3616,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="JQLExtensions.js.html">JQLExtensions.js</a>, <a href="JQLExtensions.js.html#line634">line 634</a>
+        <a href="JQLExtensions.js.html">JQLExtensions.js</a>, <a href="JQLExtensions.js.html#line657">line 657</a>
     </li></ul></dd>
     
 
@@ -3843,7 +3848,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="JQLExtensions.js.html">JQLExtensions.js</a>, <a href="JQLExtensions.js.html#line572">line 572</a>
+        <a href="JQLExtensions.js.html">JQLExtensions.js</a>, <a href="JQLExtensions.js.html#line595">line 595</a>
     </li></ul></dd>
     
 
@@ -4552,7 +4557,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="JQLExtensions.js.html">JQLExtensions.js</a>, <a href="JQLExtensions.js.html#line507">line 507</a>
+        <a href="JQLExtensions.js.html">JQLExtensions.js</a>, <a href="JQLExtensions.js.html#line530">line 530</a>
     </li></ul></dd>
     
 
@@ -5692,7 +5697,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="JQLExtensions.js.html">JQLExtensions.js</a>, <a href="JQLExtensions.js.html#line436">line 436</a>
+        <a href="JQLExtensions.js.html">JQLExtensions.js</a>, <a href="JQLExtensions.js.html#line459">line 459</a>
     </li></ul></dd>
     
 
@@ -6214,7 +6219,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Mon Nov 29 2021 08:11:29 GMT+0100 (Midden-Europese standaardtijd) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Mon Nov 29 2021 11:07:20 GMT+0100 (Midden-Europese standaardtijd) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
