@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>Home - Documentation</title>
+    <title>JQL/XHelpers/HtmlCleanup - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -32,17 +32,190 @@
 
 <div id="main">
     
+    <h1 class="page-title">JQL/XHelpers/HtmlCleanup</h1>
+    
 
     
 
 
 
+
+<section>
+
+<header>
+    
+        
+            
+        
+    
+</header>
+
+<article>
+    
+        <div class="container-overview">
+        
+            
+                <div class="description usertext">Clean/sanitize html. It uses definitions from<a href="module-JQL_XHelpers_HtmlTags.html">HTMLTags</a> and <a href="module-JQL_XHelpers_Attributes.html">Attributes</a></div>
+            
+
+            
+                
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="DOMCleanup.js.html">DOMCleanup.js</a>, <a href="DOMCleanup.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+        
+        </div>
+    
+
+    
+
+    
+
+    
+    
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="~logElementCreationErrors"><span class="type-signature">(inner) </span>logElementCreationErrors<span class="signature">(onOff)</span><span class="type-signature"></span></h4>
+
     
 
 
-    <section class="package">
-        <h3> </h3>		
-    </section>
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="DOMCleanup.js.html">DOMCleanup.js</a>, <a href="DOMCleanup.js.html#line97">line 97</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    Activate/Deactivate logging of element creation errors to console.
+</div>
 
 
 
@@ -51,26 +224,385 @@
 
 
 
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>onOff</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Activate (true) or deactivate (false). Off by default.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="~setTagPermission"><span class="type-signature">(inner) </span>setTagPermission<span class="signature">(tagName, allowed)</span><span class="type-signature"></span></h4>
 
     
 
 
 
-    <section class="readme usertext">
-        <article><h1>JQL: a HTMLElement extension module (JQuery alike)</h1>
-<p>This library is inspired by the idea that some JQuery was too good
-<a href="http://youmightnotneedjquery.com/">to ditch</a>.</p>
-<p>It is developed in a modular fashion and uses ES20xx.</p>
-<p>It is <em>not</em> a replacement for <a href="https://github.com/jquery/jquery">JQuery</a>.
-Consider it a subset of JQuery <i>alike</i> methods for (collections of) HTML elements within a HTML document.</p>
-<p>The module can either be imported in a <a href="https://kooiinc.github.io/JQL/lib/JQLBundle.js">compiled</a> - or
-<a href="https://kooiinc.github.io/JQL/src/JQueryLike.js">full code</a> version.</p>
-<p>Explore this <a href="https://testbed.nicon.nl/JQLDemo/" target="_blank">demo/example</a>,
-or explore the <a href="https://kooiinc.github.io/JQLDoc" target="_blank">the code documentation</a>.</p>
-<p><strong>Have fun!</strong></p></article>
-    </section>
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="DOMCleanup.js.html">DOMCleanup.js</a>, <a href="DOMCleanup.js.html#line83">line 83</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
 
 
+
+
+
+<div class="description usertext">
+    Set permissions for specific tags. See <a href="module-JQL_XHelpers_HtmlTags.html">module HtmlTags</a><br>Exposed as <code>JQL.setTagPermission</code>.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>tagName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the tag to set allowance for, e.g. <code>link</code> or <code>iframe</code>.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>allowed</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">true: can use tag, false: can not use tag.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+
+    
+        <h3 class="subsection-title">Type Definitions</h3>
+
+        
+                
+<h4 class="name" id="~allowUnknownHtmlTags">allowUnknownHtmlTags</h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="DOMCleanup.js.html">DOMCleanup.js</a>, <a href="DOMCleanup.js.html#line11">line 11</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>on</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Allow unknown HTML tags</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>off</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Do not allow unknown HTML tags (default)</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<div class="description usertext">
+    set allowance for unknown HTML tags, exposed as <code>JQL.allowUnknownHtmlTags</code><br>See also <a href="module-JQL_XHelpers_HtmlTags.html">module HtmlTags</a>
+</div>
+
+
+
+
+
+
+
+
+            
+    
+
+    
+</article>
+
+</section>
 
 
 

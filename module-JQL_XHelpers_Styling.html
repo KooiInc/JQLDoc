@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>Home - Documentation</title>
+    <title>JQL/XHelpers/Styling - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -32,45 +32,487 @@
 
 <div id="main">
     
+    <h1 class="page-title">JQL/XHelpers/Styling</h1>
+    
 
     
 
 
 
+
+<section>
+
+<header>
+    
+        
+            
+        
+    
+</header>
+
+<article>
+    
+        <div class="container-overview">
+        
+            
+                <div class="description usertext">Styling module: add or change style rules in a <code>&lt;style></code> element, added to theheader of the enclosing document if not already done so</div>
+            
+
+            
+                
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Styling.js.html">Styling.js</a>, <a href="Styling.js.html#line6">line 6</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+        
+        </div>
+    
+
+    
+
+    
+
+    
+    
+    
+
+     
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="~customStylesheet"><span class="type-signature">(inner, constant) </span>customStylesheet<span class="type-signature"> :object</span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Styling.js.html">Styling.js</a>, <a href="Styling.js.html#line25">line 25</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">getter/setter</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The id to use for a custom style sheet<br>default value: "customCSS"</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>getSheet</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">getter</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">retrieve the custom style sheet<br><b>Note</b>: the stylesheet will be created if it doesn't exist</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<div class="description usertext">
+    custom stylesheet id helper
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>customStylesheet.id = "mySheet";console.log(custumStylesheet.id); //=> 'mySheet'console.log(custumStylesheet.getSheet.outerHTML);//=> &lt;style type="text/css" id="mySheet>&lt;/style>"</code></pre>
+
+
+
+        
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="~changeCssStyleRule"><span class="type-signature">(inner) </span>changeCssStyleRule<span class="signature">(selector, rules, customCssId)</span><span class="type-signature"></span></h4>
+
     
 
 
-    <section class="package">
-        <h3> </h3>		
-    </section>
 
 
+<dl class="details">
 
-
-
-
-
-
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Styling.js.html">Styling.js</a>, <a href="Styling.js.html#line85">line 85</a>
+    </li></ul></dd>
+    
 
     
 
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
 
 
-    <section class="readme usertext">
-        <article><h1>JQL: a HTMLElement extension module (JQuery alike)</h1>
-<p>This library is inspired by the idea that some JQuery was too good
-<a href="http://youmightnotneedjquery.com/">to ditch</a>.</p>
-<p>It is developed in a modular fashion and uses ES20xx.</p>
-<p>It is <em>not</em> a replacement for <a href="https://github.com/jquery/jquery">JQuery</a>.
-Consider it a subset of JQuery <i>alike</i> methods for (collections of) HTML elements within a HTML document.</p>
-<p>The module can either be imported in a <a href="https://kooiinc.github.io/JQL/lib/JQLBundle.js">compiled</a> - or
-<a href="https://kooiinc.github.io/JQL/src/JQueryLike.js">full code</a> version.</p>
-<p>Explore this <a href="https://testbed.nicon.nl/JQLDemo/" target="_blank">demo/example</a>,
-or explore the <a href="https://kooiinc.github.io/JQLDoc" target="_blank">the code documentation</a>.</p>
-<p><strong>Have fun!</strong></p></article>
-    </section>
 
 
+
+<div class="description usertext">
+    Change or create some css rule in an existing or dynamically created stylesheet (id: cssId) in the document<br><br>A @media rule can also be inserted. Use a media rule for the selector (e.g.<code>@media print</code>)and set the style rules for it for one or more selectors using an object with one key: <i>mediaSelectors</i>, e.g.:<br><code>{mediaSelectors: { "div#x": {display: `none`}, "div#y": color: `green`} }</code>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// assume changeRuleset is imported as setStyleRulesetStyleRule(".myClass", {color: "#c0c0c0", padding: "0 4px 0 15px"}, "YesItsMyCss");//           ^ someRule   ^                                            ^//                        ^ css rules                                  ^//                                                                     ^ id of the stylesheet//// set a @media rulesetStyleRule( "@media(max-width: 1200px)",//             ^ @media rule              { mediaSelectors: {".myClass": {maxWidth: `75vw`}, "#someDiv": {color: red}} } )//                                ^ selector  ^//                                            ^ css rule(s)</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>selector</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the (css) selectorText, like <code>ul li.inActive</code>, <code>.someClass</code> etc.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>rules</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">an object with CSSStyleDeclarations<br><b>Note</b>: enclose a string value of `content` in quotes (e.g. <code>&#123;content: `'Some string'`&#125;</code>)<br><b>Note</b>: rule keys should be valid (e.g. <code>&#123;marginRight: `0.3rem`&#125;</code>or <code>&#123;"margin-right": `0.3rem`&#125;</code>)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>customCssId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">undefined</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">id of the css stylesheet (to create or retrieve), default "customCSS"</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 

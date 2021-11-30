@@ -214,6 +214,7 @@ nav {
   overflow: auto;
   position: fixed;
   height: 100%;
+  padding-bottom: 5rem;
 }
 
 nav #nav-search{
