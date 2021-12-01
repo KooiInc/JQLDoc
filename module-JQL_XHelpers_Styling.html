@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>JQLLog.js - Documentation</title>
+    <title>JQL/XHelpers/Styling - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -32,230 +32,487 @@
 
 <div id="main">
     
-    <h1 class="page-title">JQLLog.js</h1>
+    <h1 class="page-title">JQL/XHelpers/Styling</h1>
     
 
     
 
 
 
+
+<section>
+
+<header>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>// noinspection JSValidateJSDoc,JSUnresolvedVariable,JSUnusedGlobalSymbols
+        
+            
+        
+    
+</header>
 
-/**
- * A small module for logging in a fixed positioned JQLLog box
- * &lt;br>Every line logged is preceded by the time it is logged (granularity: milliseconds)
- * The styling of the logbox happens via a &lt;code>&amp;lt;style>&lt;/code> element, added to the
- * header of the enclosing document.
- * @module JQL/JQLLog
- */
-import {createElementFromHtmlString, element2DOM, insertPositions} from "./DOM.js";
-import {setStyle, customStylesheet} from "./Styling.js";
-import {time, isVisible} from "./JQLExtensionHelpers.js";
-/**
- * Some utility methods for logging
- * @inner {Object.&lt;key, Function|boolean>} debugLog
- * @property {function} debugLog.isVisible Is the JQLLog box visible?
- * @property {function} debugLog.on Activate logging for JQL.
- * @property {function} debugLog.off Deactivate logging for JQL.
- * @property {function} debugLog.remove Deactivate logging for JQL and remove &lt;code>div#logBox&lt;/code>.
- * @property {function} debugLog.hide Hide the JQLLog box.
- * @property {function} debugLog.show Show the JQLLog box.
- * @property {function} debugLog.toConsole Log to console.
- * @property {function} debugLog.reversed Log top to bottom or latest first.
- * @property {function} debugLog.clear the log box.
- * @property {boolean} debugLog.isOn (getter) is logging on?
- */
-const debugLog = {
-  get isOn() { return useLogging; },
-  isVisible: () => logBox &amp;&amp; isVisible(logBox),
-  on() {
-    useLogging = true;
-    if (!log2Console) {
-      logBox = document.querySelector("#jql_logger") || createLogElement();
-      logBox.parentNode.classList.add(`visible`);
-    }
-    Log(`Logging started (to ${log2Console ? `console` : `document`})`);
-  },
-  off() {
-    if (logBox) {
-      Log(`Logging stopped`);
-      logBox &amp;&amp; logBox.parentNode.classList.remove(`visible`);
-    }
-    useLogging = false;
-  },
-  /**
-   * Log everything to the browser console
-   * &lt;br>Exposed as: &lt;code>debugLog.toConsole&lt;/code>
-   * &lt;br>&lt;b>Note&lt;/b>: this possibly destroys an alreay created
-   * &lt;code>div#logBox&lt;/code> in the document if set to true.
-   * @memberof module:JQL/JQLLog
-   * @param console {boolean} log to browser console (true) or not (false, default)
-   */
-  toConsole(console = false) {
-    log2Console = console;
-    useLogging = console;
-    console &amp;&amp; logBox &amp;&amp; logBox.parentNode.remove();
-  },
-  remove: () => {
-    useLogging = false;
-    document.querySelector(`#logBox`).remove();
-  },
-  hide: () => logBox &amp;&amp; logBox.parentNode.classList.remove(`visible`),
-  show: () => logBox &amp;&amp; logBox.parentNode.classList.add(`visible`),
-  /**
-   * Change direction of log entries
-   * &lt;br>Exposed as: &lt;code>debugLog.reversed&lt;/code>
-   * @memberof module:JQL/JQLLog
-   * @param reverse {boolean} latest last (false) or latest first (true) (default true)
-   */
-  reversed(reverse = true) {
-    reverseLogging = reverse;
-    Log(`Reverse logging reset: now logging ${
-      reverse ? `bottom to top (latest first)` : `top to bottom (latest last)`}`);
-  },
-  clear() {
-    if (logBox) {
-      logBox.textContent = ``;
-      Log(`Cleared`);
-    }
-  }
-};
+<article>
+    
+        <div class="container-overview">
+        
+            
+                <div class="description usertext">Styling module: add or change style rules in a <code>&lt;style></code> element, added to theheader of the enclosing document if not already done so</div>
+            
 
-/**
- * The default styling to use for the logbox. This is used by [setStyling4Log]{@link module:JQL/JQLLog~setStyling4Log}.
- * @const {Object.&lt;string, Object.&lt;string, string|number>>} stylingDefault4Log
- * @memberof module:JQL/JQLLog
- */
-let stylingDefault4Log = {
-  "#logBox": {
-    minWidth: `0px`,
-    maxWidth: `0px`,
-    minHeight: `0px`,
-    maxHeight: `0px`,
-    width: `0`,
-    height: `0`,
-    zIndex: -1,
-    border: `none`,
-    padding: `0px`,
-    overflow: `hidden`,
-    transition: `all 0.3s ease`,
-    position: `fixed`,
-  },
-  "#logBox.visible": {
-    backgroundColor: `rgb(255, 255, 224)`,
-    zIndex: 1,
-    position: `static`,
-    border: `1px dotted rgb(153, 153, 153)`,
-    maxWidth: `33vw`,
-    minWidth: `30vw`,
-    minHeight: `10vh`,
-    maxHeight: `90vh`,
-    overflow: `auto`,
-    width: `50vw`,
-    height: `20vh`,
-    margin: `1rem 0px`,
-    padding: `0px 8px 19px`,
-    resize: `both`,
-  },
-  "@media screen and (min-width: 320px) and (max-width: 1024px)": {
-    mediaSelectors: {
-      "#logBox.visible": {
-        maxWidth: `90vw`,
-        width: `90vw`,
-        resize: `none` },
-    }
-  },
-  "#logBox .legend": {
-    textAlign: `center`,
-    position: `absolute`,
-    marginTop: `-1em`,
-    width: `inherit`,
-    maxWidth: `inherit`,
-  },
-  "#logBox .legend div": {
-    textAlign: `center`,
-    display: `inline-block`,
-    maxWidth: `inherit`,
-    height: `1.2rem`,
-    backgroundColor: `rgb(119, 119, 119)`,
-    padding: `2px 10px`,
-    color: `rgb(255, 255, 255)`,
-    boxShadow: `rgb(119 119 119) 2px 1px 10px`,
-    borderRadius: `4px`,
-  },
-  "#logBox .legend div:before": {
-    content: `"JQL Logging"`,
-  },
-  "#logBox #jql_logger": {
-    marginTop: `0.7rem`,
-    lineHeight: `1.4em`,
-    fontFamily: `consolas, monospace`,
-    whiteSpace: `pre-wrap`,
-    maxWidth: `inherit`,
-  }
-};
-let useLogging = false;
-let log2Console = false;
-let reverseLogging = true;
-let logBox = undefined;
+            
+                
 
-/**
- * Add style classes for the JQLLog box to a custom css style element.
- * @param styles {Object} style rules Object, e.g. &lt;code>&amp;#123;margin: `0`, color: `green`&amp;#125;&lt;/code>.
- * Default styles are in &lt;code>stylingDefault4Log&lt;/code>
- * header of the document in which JQL is used). Default is 'JQLCustomCSS'.
- */
-const setStyling4Log = (styles = stylingDefault4Log) =>
-  Object.entries(styles).forEach(([selector, style]) => setStyle(selector, style, customStylesheet.id));
 
-let useHtml = true;
 
-const createLogElement = () => {
-  setStyling4Log();
-  const jql_logger_element = useHtml ? `div` : `pre`;
-  const loggingFieldSet = `
-    &lt;div id="logBox">
-      &lt;div class="legend">
-        &lt;div>&lt;/div>
-      &lt;/div>
-      &lt;${jql_logger_element} id="jql_logger">&lt;/${jql_logger_element}>
-    &lt;/div>`;
-  element2DOM(createElementFromHtmlString(loggingFieldSet), undefined, insertPositions.AfterBegin);
-  return document.querySelector(`#jql_logger`);
-};
 
-const decodeForConsole = something => something.constructor === String &amp;&amp;
-  Object.assign(document.createElement(`textarea`), {innerHTML: something}).textContent ||
-  something;
+<dl class="details">
 
-/**
- * Create JQLLog entry/entries, preceded with the time of logging (millisecond granularity).
- * &lt;br>If the local [useLogging] boolean is false, nothing is logged
- * &lt;br> in JQL exposed as &lt;code>JQL.log&lt;/code>
- * @param args {...(string|Object)} string(s) or Object(s) to print in the JQLLog box
- * &lt;br>&lt;b>Note&lt;/b> Objects are converted to JSON representation
- */
-const Log = (...args) => {
-    if (!useLogging) { return; }
-    if (!log2Console &amp;&amp; !logBox) {
-      createLogElement();
-    }
-    const logLine = arg => `${arg instanceof Object ? JSON.stringify(arg, null, 2) : arg}\n`;
-    args.forEach( arg => log2Console
-      ? console.log(decodeForConsole(arg))
-      : logBox.insertAdjacentHTML(
-          reverseLogging ? `afterbegin` : `beforeend`,
-          `${time()} ${logLine(arg.replace(/\n/g, `&lt;br>`))}`)
-    );
-};
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Styling.js.html">Styling.js</a>, <a href="Styling.js.html#line6">line 6</a>
+    </li></ul></dd>
+    
 
-const setStylingId4Log = (id = customStylesheet.id) => customStylesheet.id = id;
-export { Log, debugLog, setStyling4Log };</code></pre>
-        </article>
-    </section>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+        
+        </div>
+    
+
+    
+
+    
+
+    
+    
+    
+
+     
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="~customStylesheet"><span class="type-signature">(inner, constant) </span>customStylesheet<span class="type-signature"> :object</span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Styling.js.html">Styling.js</a>, <a href="Styling.js.html#line25">line 25</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">getter/setter</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The id to use for a custom style sheet<br>default value: "customCSS"</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>getSheet</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">getter</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">retrieve the custom style sheet<br><b>Note</b>: the stylesheet will be created if it doesn't exist</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<div class="description usertext">
+    custom stylesheet id helper
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>customStylesheet.id = "mySheet";console.log(custumStylesheet.id); //=> 'mySheet'console.log(custumStylesheet.getSheet.outerHTML);//=> &lt;style type="text/css" id="mySheet>&lt;/style>"</code></pre>
+
+
+
+        
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="~changeCssStyleRule"><span class="type-signature">(inner) </span>changeCssStyleRule<span class="signature">(selector, rules, customCssId)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Styling.js.html">Styling.js</a>, <a href="Styling.js.html#line85">line 85</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    Change or create some css rule in an existing or dynamically created stylesheet (id: cssId) in the document<br><br>A @media rule can also be inserted. Use a media rule for the selector (e.g.<code>@media print</code>)and set the style rules for it for one or more selectors using an object with one key: <i>mediaSelectors</i>, e.g.:<br><code>{mediaSelectors: { "div#x": {display: `none`}, "div#y": color: `green`} }</code>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// assume changeRuleset is imported as setStyleRulesetStyleRule(".myClass", {color: "#c0c0c0", padding: "0 4px 0 15px"}, "YesItsMyCss");//           ^ someRule   ^                                            ^//                        ^ css rules                                  ^//                                                                     ^ id of the stylesheet//// set a @media rulesetStyleRule( "@media(max-width: 1200px)",//             ^ @media rule              { mediaSelectors: {".myClass": {maxWidth: `75vw`}, "#someDiv": {color: red}} } )//                                ^ selector  ^//                                            ^ css rule(s)</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>selector</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the (css) selectorText, like <code>ul li.inActive</code>, <code>.someClass</code> etc.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>rules</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">an object with CSSStyleDeclarations<br><b>Note</b>: enclose a string value of `content` in quotes (e.g. <code>&#123;content: `'Some string'`&#125;</code>)<br><b>Note</b>: rule keys should be valid (e.g. <code>&#123;marginRight: `0.3rem`&#125;</code>or <code>&#123;"margin-right": `0.3rem`&#125;</code>)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>customCssId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">undefined</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">id of the css stylesheet (to create or retrieve), default "customCSS"</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 

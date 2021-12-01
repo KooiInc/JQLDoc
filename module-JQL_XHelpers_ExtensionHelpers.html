@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>JQL - Documentation</title>
+    <title>JQL/XHelpers/ExtensionHelpers - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -32,7 +32,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">JQL</h1>
+    <h1 class="page-title">JQL/XHelpers/ExtensionHelpers</h1>
     
 
     
@@ -55,7 +55,7 @@
         <div class="container-overview">
         
             
-                <div class="description usertext">The JQL core</div>
+                <div class="description usertext">Some helpers for JQL (module, extensions).</div>
             
 
             
@@ -69,7 +69,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="JQueryLike.js.html">JQueryLike.js</a>, <a href="JQueryLike.js.html#line41">line 41</a>
+        <a href="JQLExtensionHelpers.js.html">JQLExtensionHelpers.js</a>, <a href="JQLExtensionHelpers.js.html#line7">line 7</a>
     </li></ul></dd>
     
 
@@ -162,7 +162,7 @@
 
     
 
-    <h4 class="name" id="~ExtendedNodeList"><span class="type-signature">(inner) </span>ExtendedNodeList<span class="signature">(input, root, position)</span><span class="type-signature"> &rarr; {ExtendedNodeList}</span></h4>
+    <h4 class="name" id="~getAllDataAttributeValues"><span class="type-signature">(inner) </span>getAllDataAttributeValues<span class="signature">(el)</span><span class="type-signature"> &rarr; {Object|undefined}</span></h4>
 
     
 
@@ -174,7 +174,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="JQueryLike.js.html">JQueryLike.js</a>, <a href="JQueryLike.js.html#line111">line 111</a>
+        <a href="JQLExtensionHelpers.js.html">JQLExtensionHelpers.js</a>, <a href="JQLExtensionHelpers.js.html#line136">line 136</a>
     </li></ul></dd>
     
 
@@ -214,7 +214,7 @@
 
 
 <div class="description usertext">
-    The core constructor for creating and/or deliver a node(list), exposed as<code>JQL</code><br>It delivers an instance of <code>ExtendedNodeList</code> containing a collection of<code>HTMLElement</code>s (may be empty), for which a number of jquery-like extension methods isavailable (e.g. <code>[instance].<b style="color:red">addClass</b></code>).<br>When the parametercontains html (e.g. <code>&lt;p class="someClass">Hello wrld>&lt;/p></code>), the element(s) is/arecreated and by default injected in de DOM tree unless [<code>root</code>] is a <code>HTMLBRElement</code>(the static method <code>virtual</code> is provided for the latter).<br><b>Note</b>: any html creation triggers <a href="module-JQL_XHelpers_HtmlCleanup.html">checking and sanitizing the html</a>to prevent script injection etc.
+    Retrieves key-value pairs from data-attributesif applicable.
 </div>
 
 
@@ -223,11 +223,6 @@
 
 
 
-
-
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>import $ from "JQueryLike.js";// a few examples// static methodsconst $$ = $.virtual;$.setStyle(`.done`, {color: `green`, fontWeight: `bold`});// ExtendedNodeList instances$(document.querySelectorAll(`p`));$(document.querySelector(`p.something`));$($$(`.something`));$(`.something`);$$(`&lt;p class="something" id="ex1">Hi. I am &lt;b>Groot&lt;/b>&lt;p>`); // in memory$(`&lt;p class="something" id="ex1">Hi. I am &lt;b>Groot&lt;/b>&lt;p>`); // in DOM tree$([`&lt;p class="something" id="ex2">Hi. I am &lt;b>Groot&lt;/b>&lt;p>`,   `&lt;div id="Groot">Yup, aren't you?&lt;/div>`]);// extensions (most are chainable)$(`#ex1`).text(`. Say no more`, true).addClass(`done`);$(`#Groot`)  .css({color: `green`, 'font-weight': `bold`})  .html(`&lt;i>You are, really. And it's fine.&lt;/i>`, true)  .prepend(document.createElement(`\u2022 `));</code></pre>
 
 
 
@@ -257,34 +252,13 @@
 
         <tr>
             
-                <td class="name"><code>input</code></td>
-            
-
-            <td class="type">
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">One of<ul><li><code>Node</code> Array, Nodelist or single Node of  <ul>     <li><code>HtmlElement</code>     <li><code>Comment</code>     <li><code>Text</code>   </ul></li><li><code>ExtendedNodeList</code> instance<li><code>string</code> css selector (e.g. <code>'#someElem'</code>).<br><b>Note</b>: up to selectors level 3 for most modern browsers, maybe level 4 (draft) for more advanced browsers<br>(see selectors <a href="https://drafts.csswg.org/selectors-3/">level 3</a> or <a href="https://drafts.csswg.org/selectors-4/">level 4 draft</a>)<li><code>string</code> html element string (e.g. <code>'&lt;div>Hello&lt;/div>'</code>)<li><code>Array</code> of <code>string</code> (e.g. <code>['&lt;span>Hello&lt;/span>', '&lt;span>world&lt;/span>']</code>)</ul></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>root</code></td>
+                <td class="name"><code>el</code></td>
             
 
             <td class="type">
             
                 
 <span class="param-type">HTMLElement</span>
-|
-
-<span class="param-type">ExtendedNodeList</span>
 
 
             
@@ -294,30 +268,7 @@
 
             
 
-            <td class="description last">The root element to which an element to create must be appended or inserted into (see [position] parameter)<ul>).<br>If root is an ExtendedNodeList instance, the first element of that is considered theroot element.<li>Defaults to <code>document.body</code><li>If one or more elements is/are created they will not be inserted into the DOM treewhen [root] is an instance of <code>HTMLBRElement</code> (so <code>&lt;br></code>)</ul></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>position</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Position within or before/after the root where the element must be injectedrelative to [root]- e.g. 'afterbegin' (or import and use insertPositions from DOM.js)</td>
+            <td class="description last">the html element</td>
         </tr>
 
     
@@ -343,7 +294,7 @@
 
         
 <div class="param-desc">
-    An instance of ExtendedNodeList
+    key value-pairs
 </div>
 
 
@@ -354,555 +305,466 @@
     </dt>
     <dd>
         
+<span class="param-type">Object</span>
+|
+
+<span class="param-type">undefined</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="~hex2Full"><span class="type-signature">(inner) </span>hex2Full<span class="signature">(hex)</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="JQLExtensionHelpers.js.html">JQLExtensionHelpers.js</a>, <a href="JQLExtensionHelpers.js.html#line216">line 216</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    Convert abbreviated hex color to full (eg #0C0 to #00CC00)Uses in hex2RGBA
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>hex</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the hexadecimal color code</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="~hex2RGBA"><span class="type-signature">(inner) </span>hex2RGBA<span class="signature">(hex, opacity)</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="JQLExtensionHelpers.js.html">JQLExtensionHelpers.js</a>, <a href="JQLExtensionHelpers.js.html#line227">line 227</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    Convert hex color to rgb(a) (eg #ffc to rgb(255, 255, 204)).
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>hex</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">the hexadecimal color code eg #dddd00</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>opacity</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    <code>100</code>
+                
+                </td>
+            
+
+            <td class="description last">the opacity value (0 - 1, eg 0.5)</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="~initializePrototype"><span class="type-signature">(inner) </span>initializePrototype<span class="signature">(ctor)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="JQLExtensionHelpers.js.html">JQLExtensionHelpers.js</a>, <a href="JQLExtensionHelpers.js.html#line149">line 149</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    Generic prototype initializer for JQL.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>ctor</code></td>
+            
+
+            <td class="type">
+            
+                
 <span class="param-type">ExtendedNodeList</span>
 
 
-    </dd>
-</dl>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="~JQL/allowUnknownHtmlTags"><span class="type-signature">(inner) </span>JQL/allowUnknownHtmlTags<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="JQueryLike.js.html">JQueryLike.js</a>, <a href="JQueryLike.js.html#line244">line 244</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description usertext">
-    Allow/disallow unknown HTML tags.* <br><code>[JQL instance].allowUnknownHtmlTags</code>,See <a href="module-JQL_XHelpers_HtmlCleanup.html#~allowUnknownHtmlTags">module HtmlCleanup</a>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="~JQL/debugLog"><span class="type-signature">(inner) </span>JQL/debugLog<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="JQueryLike.js.html">JQueryLike.js</a>, <a href="JQueryLike.js.html#line223">line 223</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description usertext">
-    Activate/deactivate/show/hide (debug-)logging.See <a href="module-JQL_JQLLog.html#~debugLog">module JQLLog</a>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="~JQL/insertPositions"><span class="type-signature">(inner) </span>JQL/insertPositions<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="JQueryLike.js.html">JQueryLike.js</a>, <a href="JQueryLike.js.html#line253">line 253</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description usertext">
-    Positions for use in insertAdjacentHTML(-Element).See <a href="module-JQL_XHelpers_DOM.html#~adjacents">module DOM.adjacents</a>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="~JQL/log"><span class="type-signature">(inner) </span>JQL/log<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="JQueryLike.js.html">JQueryLike.js</a>, <a href="JQueryLike.js.html#line230">line 230</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description usertext">
-    Log stuff to the logger (<a href="module-JQL_JQLLog.html#~Log">if activated</a>).<br><code>[JQL instance].log</code>,
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="~JQL/logElementCreationErrors"><span class="type-signature">(inner) </span>JQL/logElementCreationErrors<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="JQueryLike.js.html">JQueryLike.js</a>, <a href="JQueryLike.js.html#line261">line 261</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description usertext">
-    Activate/deactivate logging of element creation errors (in the console)<br><code>[JQL instance].logElementCreationErrors</code>,See <a href="module-JQL_XHelpers_HtmlCleanup.html#~logElementCreationErrors">module HtmlCleanup</a>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="~JQL/node"><span class="type-signature">(inner) </span>JQL/node<span class="signature">(selector)</span><span class="type-signature"> &rarr; {HTMLElement|null}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="JQueryLike.js.html">JQueryLike.js</a>, <a href="JQueryLike.js.html#line170">line 170</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description usertext">
-    alias for <code>document.querySelector</code>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>selector</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
             
             </td>
 
@@ -910,7 +772,7 @@
 
             
 
-            <td class="description last">a css selector</td>
+            <td class="description last">The ExtendedNodeList constructor</td>
         </tr>
 
     
@@ -932,27 +794,6 @@
 
 
 
-<h5>Returns:</h5>
-
-        
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">HTMLElement</span>
-|
-
-<span class="param-type">null</span>
-
-
-    </dd>
-</dl>
-
-    
 
 
 
@@ -961,7 +802,7 @@
 
     
 
-    <h4 class="name" id="~JQL/nodes"><span class="type-signature">(inner) </span>JQL/nodes<span class="signature">(selector)</span><span class="type-signature"> &rarr; {NodeListOf.&lt;*>}</span></h4>
+    <h4 class="name" id="~isObjectAndNotArray"><span class="type-signature">(inner) </span>isObjectAndNotArray<span class="signature">(obj)</span><span class="type-signature"> &rarr; {boolean|false|number}</span></h4>
 
     
 
@@ -973,7 +814,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="JQueryLike.js.html">JQueryLike.js</a>, <a href="JQueryLike.js.html#line178">line 178</a>
+        <a href="JQLExtensionHelpers.js.html">JQLExtensionHelpers.js</a>, <a href="JQLExtensionHelpers.js.html#line202">line 202</a>
     </li></ul></dd>
     
 
@@ -1013,7 +854,7 @@
 
 
 <div class="description usertext">
-    Alias for <code>document.querySelectorAll</code>
+    Is [obj] really an object (and not a <code>Date</code> or <code>Array</code>)?
 </div>
 
 
@@ -1051,281 +892,7 @@
 
         <tr>
             
-                <td class="name"><code>selector</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">a css selector</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">NodeListOf.&lt;*></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="~JQL/popup"><span class="type-signature">(inner) </span>JQL/popup<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="JQueryLike.js.html">JQueryLike.js</a>, <a href="JQueryLike.js.html#line293">line 293</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description usertext">
-    <code>JQL.popup</code><br>A small library for creation of (modal) popup boxes.Initialize before useSee <a href="module-JQL_Popup.html">module Popup</a>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>import $ from "JQueryLike.js";const myPopups = $.popup();myPopups.create(`Hi, I am a popup`);</code></pre>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="~JQL/setStyle"><span class="type-signature">(inner) </span>JQL/setStyle<span class="signature">(selector, ruleValues, cssId)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="JQueryLike.js.html">JQueryLike.js</a>, <a href="JQueryLike.js.html#line203">line 203</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description usertext">
-    Set style rules in the JQL custom stylesheet element<ul><li>The rules are written to a custom style sheet with id <code>#JQLCustomCSS</code> into the document<li>You can use pseudo selectors. In case of creating a rule with the <code>content</code> propertybe sure to quote the text value (see example)</ul><code>[JQL instance].setStyle</code>,See <a href="module-JQL_XHelpers_Styling.html#~changeCssStyleRule">module Styling</a>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>import $ from "JQueryLike.js";$.setStyle(`body`, {font: `normal 12px/15px verdana, arial`, margin: `2em`});$.setStyle(`.something:hover:after`, {content: `' You hovered me!'`, color: `red`});// usage$(`&lt;div>Hello stranger. Try hovering me!&lt;/div>`).addClass(`something`);</code></pre>
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>selector</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">the selector e.g. <code>#someElem.someClass</code></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>ruleValues</code></td>
+                <td class="name"><code>obj</code></td>
             
 
             <td class="type">
@@ -1341,30 +908,7 @@
 
             
 
-            <td class="description last">an object containing the rules for the selector</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>cssId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">optionally the id for the style element (default 'JQLCustomCSS')</td>
+            <td class="description last"></td>
         </tr>
 
     
@@ -1386,6 +930,30 @@
 
 
 
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+|
+
+<span class="param-type">false</span>
+|
+
+<span class="param-type">number</span>
+
+
+    </dd>
+</dl>
+
+    
 
 
 
@@ -1394,7 +962,7 @@
 
     
 
-    <h4 class="name" id="~JQL/setStyling4Log"><span class="type-signature">(inner) </span>JQL/setStyling4Log<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="~isVisible"><span class="type-signature">(inner) </span>isVisible<span class="signature">(el)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
 
     
 
@@ -1406,7 +974,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="JQueryLike.js.html">JQueryLike.js</a>, <a href="JQueryLike.js.html#line269">line 269</a>
+        <a href="JQLExtensionHelpers.js.html">JQLExtensionHelpers.js</a>, <a href="JQLExtensionHelpers.js.html#line118">line 118</a>
     </li></ul></dd>
     
 
@@ -1446,94 +1014,7 @@
 
 
 <div class="description usertext">
-    Set the styling for the logger element (<code>#logBox</code>).<br><code>[JQL instance].setStyling4Log</code>See <a href="module-JQL_JQLLog.html#~setStyling4Log">module Log</a>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="~JQL/setSystemLogActiveState"><span class="type-signature">(inner) </span>JQL/setSystemLogActiveState<span class="signature">(activeState)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="JQueryLike.js.html">JQueryLike.js</a>, <a href="JQueryLike.js.html#line277">line 277</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description usertext">
-    Activate or deactive logging of system messages. Default: false<br><code>[JQL instance].setSystemLogActiveState</code>
+    Determine the current visibility of a HTMLElement.
 </div>
 
 
@@ -1571,13 +1052,13 @@
 
         <tr>
             
-                <td class="name"><code>activeState</code></td>
+                <td class="name"><code>el</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">boolean</span>
+<span class="param-type">HTMLElement</span>
 
 
             
@@ -1587,7 +1068,7 @@
 
             
 
-            <td class="description last">on (true) or off (default false)</td>
+            <td class="description last">some html element or a style property</td>
         </tr>
 
     
@@ -1609,6 +1090,28 @@
 
 
 
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    true if visible, false if not
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
 
 
 
@@ -1617,7 +1120,7 @@
 
     
 
-    <h4 class="name" id="~JQL/setTagPermission"><span class="type-signature">(inner) </span>JQL/setTagPermission<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="~loop"><span class="type-signature">(inner) </span>loop<span class="signature">(extCollection, callback)</span><span class="type-signature"> &rarr; {ExtendedNodeList}</span></h4>
 
     
 
@@ -1629,7 +1132,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="JQueryLike.js.html">JQueryLike.js</a>, <a href="JQueryLike.js.html#line237">line 237</a>
+        <a href="JQLExtensionHelpers.js.html">JQLExtensionHelpers.js</a>, <a href="JQLExtensionHelpers.js.html#line77">line 77</a>
     </li></ul></dd>
     
 
@@ -1669,7 +1172,7 @@
 
 
 <div class="description usertext">
-    Allow/disallow the use of certain HTML tags when creating elements using JQL.See <a href="module-JQL_XHelpers_HtmlTags.html#~setTagPermission">module HtmlTags</a>
+    iterator used for most extendedNodeListCollectionExtensions.Also exposed as '[ExtCollection].each'
 </div>
 
 
@@ -1682,183 +1185,76 @@
 
 
 
+    <h5>Parameters:</h5>
+    
 
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        <th>Type</th>
 
         
-            
-
-    
-
-    <h4 class="name" id="~JQL/time"><span class="type-signature">(inner) </span>JQL/time<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="JQueryLike.js.html">JQueryLike.js</a>, <a href="JQueryLike.js.html#line285">line 285</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description usertext">
-    <code>JQL.time</code><br>Current time helper.See module Helpers
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>extCollection</code></td>
             
 
-    
-
-    <h4 class="name" id="~JQL/virtual"><span class="type-signature">(inner) </span>JQL/virtual<span class="signature">()</span><span class="type-signature"> &rarr; {ExtendedNodeList}</span></h4>
-
-    
-
+            <td class="type">
+            
+                
+<span class="param-type">ExtendedNodeList</span>
 
 
+            
+            </td>
 
-<dl class="details">
+            
 
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="JQueryLike.js.html">JQueryLike.js</a>, <a href="JQueryLike.js.html#line186">line 186</a>
-    </li></ul></dd>
-    
+            
+
+            <td class="description last">the collection of the current ExtendedNodeList instance</td>
+        </tr>
 
     
 
-    
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">to use in the loop</td>
+        </tr>
 
     
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description usertext">
-    Create an ExtendedNodeList instance without injecting elements (so, collection elements in memory)<code>[JQL instance].virtual</code>,
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>import $ from "JQueryLike.js";const inMemoryParagraph = $.virtual(`&lt;p>I am and I am not&lt;/p>`);// you won't see this in the DOM, but you can manipulate propertiesinMemoryParagraph.styleInline({color: `green`}).setData({IAmGreen: `yep`});$(`body`).append(inMemoryParagraph);// result: &lt;p style="color:green" data-i-am-green="yep">I am and I am not&lt;/p>//                                ^ Note: data-attribute displays stringified output from the browser</code></pre>
-
-
+    </tbody>
+</table>
 
 
 
@@ -1879,7 +1275,7 @@
 
         
 <div class="param-desc">
-    An instance of ExtendedNodeList
+    instance, so chainable
 </div>
 
 
@@ -1905,7 +1301,7 @@
 
     
 
-    <h4 class="name" id="~text"><span class="type-signature">(inner) </span>text<span class="signature">(str, isComment)</span><span class="type-signature"> &rarr; {Text|Comment}</span></h4>
+    <h4 class="name" id="~time"><span class="type-signature">(inner) </span>time<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
 
     
 
@@ -1917,7 +1313,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="JQueryLike.js.html">JQueryLike.js</a>, <a href="JQueryLike.js.html#line306">line 306</a>
+        <a href="JQLExtensionHelpers.js.html">JQLExtensionHelpers.js</a>, <a href="JQLExtensionHelpers.js.html#line193">line 193</a>
     </li></ul></dd>
     
 
@@ -1957,7 +1353,112 @@
 
 
 <div class="description usertext">
-    Utiltity to create a textNode or a comment(for use as parameter creating a JQL instance).Alias for <code>document.createText</code> / <code>document.createComment</code
+    Returns the current time, including milliseconds enclosed in square brackets,e.q. <code>[12:32:34.346]</code>.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="~toDashedNotation"><span class="type-signature">(inner) </span>toDashedNotation<span class="signature">(str2Convert)</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="JQLExtensionHelpers.js.html">JQLExtensionHelpers.js</a>, <a href="JQLExtensionHelpers.js.html#line65">line 65</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    Convert a camel-cased term to dashed string, e.g. for style rule keys
 </div>
 
 
@@ -1970,7 +1471,7 @@
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>import $ from "JQueryLike.js";$($.txt(`HELLO World`));</code></pre>
+    <pre class="prettyprint"><code>toDashedNotation(`marginRight`); //=> `margin-right`toDashedNotation(`borderTopLeftRadius`); //=> `border-top-left-radius`</code></pre>
 
 
 
@@ -1989,6 +1490,162 @@
 
         
 
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>str2Convert</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The (property)string to convert</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="~truncateHtmlStr"><span class="type-signature">(inner) </span>truncateHtmlStr<span class="signature">(str, maxLength)</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="JQLExtensionHelpers.js.html">JQLExtensionHelpers.js</a>, <a href="JQLExtensionHelpers.js.html#line178">line 178</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    Trunctate a html string (e.g. from <code>[element]outerHTML</code>)to a single line with a maximum length
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -2015,21 +1672,25 @@
             
 
             
+                <td class="default">
+                
+                </td>
+            
 
-            <td class="description last">The content of the Text element</td>
+            <td class="description last">The html string</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>isComment</code></td>
+                <td class="name"><code>maxLength</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">boolean</span>
+<span class="param-type">Number</span>
 
 
             
@@ -2038,8 +1699,14 @@
             
 
             
+                <td class="default">
+                
+                    <code>120</code>
+                
+                </td>
+            
 
-            <td class="description last">false (default) as Text, true as Comment</td>
+            <td class="description last">The length to truncate to (default: 120)</td>
         </tr>
 
     
@@ -2064,10 +1731,6 @@
 <h5>Returns:</h5>
 
         
-<div class="param-desc">
-    a Text or Comment element (CharacterData)
-</div>
-
 
 
 <dl class="param-type">
@@ -2076,10 +1739,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Text</span>
-|
-
-<span class="param-type">Comment</span>
+<span class="param-type">string</span>
 
 
     </dd>

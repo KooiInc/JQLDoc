@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>JQLLog.js - Documentation</title>
+    <title>JQL/XHelpers/HtmlCleanup - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -32,230 +32,577 @@
 
 <div id="main">
     
-    <h1 class="page-title">JQLLog.js</h1>
+    <h1 class="page-title">JQL/XHelpers/HtmlCleanup</h1>
     
 
     
 
 
 
+
+<section>
+
+<header>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>// noinspection JSValidateJSDoc,JSUnresolvedVariable,JSUnusedGlobalSymbols
+        
+            
+        
+    
+</header>
 
-/**
- * A small module for logging in a fixed positioned JQLLog box
- * &lt;br>Every line logged is preceded by the time it is logged (granularity: milliseconds)
- * The styling of the logbox happens via a &lt;code>&amp;lt;style>&lt;/code> element, added to the
- * header of the enclosing document.
- * @module JQL/JQLLog
- */
-import {createElementFromHtmlString, element2DOM, insertPositions} from "./DOM.js";
-import {setStyle, customStylesheet} from "./Styling.js";
-import {time, isVisible} from "./JQLExtensionHelpers.js";
-/**
- * Some utility methods for logging
- * @inner {Object.&lt;key, Function|boolean>} debugLog
- * @property {function} debugLog.isVisible Is the JQLLog box visible?
- * @property {function} debugLog.on Activate logging for JQL.
- * @property {function} debugLog.off Deactivate logging for JQL.
- * @property {function} debugLog.remove Deactivate logging for JQL and remove &lt;code>div#logBox&lt;/code>.
- * @property {function} debugLog.hide Hide the JQLLog box.
- * @property {function} debugLog.show Show the JQLLog box.
- * @property {function} debugLog.toConsole Log to console.
- * @property {function} debugLog.reversed Log top to bottom or latest first.
- * @property {function} debugLog.clear the log box.
- * @property {boolean} debugLog.isOn (getter) is logging on?
- */
-const debugLog = {
-  get isOn() { return useLogging; },
-  isVisible: () => logBox &amp;&amp; isVisible(logBox),
-  on() {
-    useLogging = true;
-    if (!log2Console) {
-      logBox = document.querySelector("#jql_logger") || createLogElement();
-      logBox.parentNode.classList.add(`visible`);
-    }
-    Log(`Logging started (to ${log2Console ? `console` : `document`})`);
-  },
-  off() {
-    if (logBox) {
-      Log(`Logging stopped`);
-      logBox &amp;&amp; logBox.parentNode.classList.remove(`visible`);
-    }
-    useLogging = false;
-  },
-  /**
-   * Log everything to the browser console
-   * &lt;br>Exposed as: &lt;code>debugLog.toConsole&lt;/code>
-   * &lt;br>&lt;b>Note&lt;/b>: this possibly destroys an alreay created
-   * &lt;code>div#logBox&lt;/code> in the document if set to true.
-   * @memberof module:JQL/JQLLog
-   * @param console {boolean} log to browser console (true) or not (false, default)
-   */
-  toConsole(console = false) {
-    log2Console = console;
-    useLogging = console;
-    console &amp;&amp; logBox &amp;&amp; logBox.parentNode.remove();
-  },
-  remove: () => {
-    useLogging = false;
-    document.querySelector(`#logBox`).remove();
-  },
-  hide: () => logBox &amp;&amp; logBox.parentNode.classList.remove(`visible`),
-  show: () => logBox &amp;&amp; logBox.parentNode.classList.add(`visible`),
-  /**
-   * Change direction of log entries
-   * &lt;br>Exposed as: &lt;code>debugLog.reversed&lt;/code>
-   * @memberof module:JQL/JQLLog
-   * @param reverse {boolean} latest last (false) or latest first (true) (default true)
-   */
-  reversed(reverse = true) {
-    reverseLogging = reverse;
-    Log(`Reverse logging reset: now logging ${
-      reverse ? `bottom to top (latest first)` : `top to bottom (latest last)`}`);
-  },
-  clear() {
-    if (logBox) {
-      logBox.textContent = ``;
-      Log(`Cleared`);
-    }
-  }
-};
+<article>
+    
+        <div class="container-overview">
+        
+            
+                <div class="description usertext">Clean/sanitize html. It uses definitions from<a href="module-JQL_XHelpers_HtmlTags.html">HTMLTags</a> and <a href="module-JQL_XHelpers_Attributes.html">Attributes</a></div>
+            
 
-/**
- * The default styling to use for the logbox. This is used by [setStyling4Log]{@link module:JQL/JQLLog~setStyling4Log}.
- * @const {Object.&lt;string, Object.&lt;string, string|number>>} stylingDefault4Log
- * @memberof module:JQL/JQLLog
- */
-let stylingDefault4Log = {
-  "#logBox": {
-    minWidth: `0px`,
-    maxWidth: `0px`,
-    minHeight: `0px`,
-    maxHeight: `0px`,
-    width: `0`,
-    height: `0`,
-    zIndex: -1,
-    border: `none`,
-    padding: `0px`,
-    overflow: `hidden`,
-    transition: `all 0.3s ease`,
-    position: `fixed`,
-  },
-  "#logBox.visible": {
-    backgroundColor: `rgb(255, 255, 224)`,
-    zIndex: 1,
-    position: `static`,
-    border: `1px dotted rgb(153, 153, 153)`,
-    maxWidth: `33vw`,
-    minWidth: `30vw`,
-    minHeight: `10vh`,
-    maxHeight: `90vh`,
-    overflow: `auto`,
-    width: `50vw`,
-    height: `20vh`,
-    margin: `1rem 0px`,
-    padding: `0px 8px 19px`,
-    resize: `both`,
-  },
-  "@media screen and (min-width: 320px) and (max-width: 1024px)": {
-    mediaSelectors: {
-      "#logBox.visible": {
-        maxWidth: `90vw`,
-        width: `90vw`,
-        resize: `none` },
-    }
-  },
-  "#logBox .legend": {
-    textAlign: `center`,
-    position: `absolute`,
-    marginTop: `-1em`,
-    width: `inherit`,
-    maxWidth: `inherit`,
-  },
-  "#logBox .legend div": {
-    textAlign: `center`,
-    display: `inline-block`,
-    maxWidth: `inherit`,
-    height: `1.2rem`,
-    backgroundColor: `rgb(119, 119, 119)`,
-    padding: `2px 10px`,
-    color: `rgb(255, 255, 255)`,
-    boxShadow: `rgb(119 119 119) 2px 1px 10px`,
-    borderRadius: `4px`,
-  },
-  "#logBox .legend div:before": {
-    content: `"JQL Logging"`,
-  },
-  "#logBox #jql_logger": {
-    marginTop: `0.7rem`,
-    lineHeight: `1.4em`,
-    fontFamily: `consolas, monospace`,
-    whiteSpace: `pre-wrap`,
-    maxWidth: `inherit`,
-  }
-};
-let useLogging = false;
-let log2Console = false;
-let reverseLogging = true;
-let logBox = undefined;
+            
+                
 
-/**
- * Add style classes for the JQLLog box to a custom css style element.
- * @param styles {Object} style rules Object, e.g. &lt;code>&amp;#123;margin: `0`, color: `green`&amp;#125;&lt;/code>.
- * Default styles are in &lt;code>stylingDefault4Log&lt;/code>
- * header of the document in which JQL is used). Default is 'JQLCustomCSS'.
- */
-const setStyling4Log = (styles = stylingDefault4Log) =>
-  Object.entries(styles).forEach(([selector, style]) => setStyle(selector, style, customStylesheet.id));
 
-let useHtml = true;
 
-const createLogElement = () => {
-  setStyling4Log();
-  const jql_logger_element = useHtml ? `div` : `pre`;
-  const loggingFieldSet = `
-    &lt;div id="logBox">
-      &lt;div class="legend">
-        &lt;div>&lt;/div>
-      &lt;/div>
-      &lt;${jql_logger_element} id="jql_logger">&lt;/${jql_logger_element}>
-    &lt;/div>`;
-  element2DOM(createElementFromHtmlString(loggingFieldSet), undefined, insertPositions.AfterBegin);
-  return document.querySelector(`#jql_logger`);
-};
 
-const decodeForConsole = something => something.constructor === String &amp;&amp;
-  Object.assign(document.createElement(`textarea`), {innerHTML: something}).textContent ||
-  something;
+<dl class="details">
 
-/**
- * Create JQLLog entry/entries, preceded with the time of logging (millisecond granularity).
- * &lt;br>If the local [useLogging] boolean is false, nothing is logged
- * &lt;br> in JQL exposed as &lt;code>JQL.log&lt;/code>
- * @param args {...(string|Object)} string(s) or Object(s) to print in the JQLLog box
- * &lt;br>&lt;b>Note&lt;/b> Objects are converted to JSON representation
- */
-const Log = (...args) => {
-    if (!useLogging) { return; }
-    if (!log2Console &amp;&amp; !logBox) {
-      createLogElement();
-    }
-    const logLine = arg => `${arg instanceof Object ? JSON.stringify(arg, null, 2) : arg}\n`;
-    args.forEach( arg => log2Console
-      ? console.log(decodeForConsole(arg))
-      : logBox.insertAdjacentHTML(
-          reverseLogging ? `afterbegin` : `beforeend`,
-          `${time()} ${logLine(arg.replace(/\n/g, `&lt;br>`))}`)
-    );
-};
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="DOMCleanup.js.html">DOMCleanup.js</a>, <a href="DOMCleanup.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
 
-const setStylingId4Log = (id = customStylesheet.id) => customStylesheet.id = id;
-export { Log, debugLog, setStyling4Log };</code></pre>
-        </article>
-    </section>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+        
+        </div>
+    
+
+    
+
+    
+
+    
+    
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="~logElementCreationErrors"><span class="type-signature">(inner) </span>logElementCreationErrors<span class="signature">(onOff)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="DOMCleanup.js.html">DOMCleanup.js</a>, <a href="DOMCleanup.js.html#line97">line 97</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    Activate/Deactivate logging of element creation errors to console.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>onOff</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Activate (true) or deactivate (false). Off by default.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="~setTagPermission"><span class="type-signature">(inner) </span>setTagPermission<span class="signature">(tagName, allowed)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="DOMCleanup.js.html">DOMCleanup.js</a>, <a href="DOMCleanup.js.html#line83">line 83</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    Set permissions for specific tags. See <a href="module-JQL_XHelpers_HtmlTags.html">module HtmlTags</a><br>Exposed as <code>JQL.setTagPermission</code>.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>tagName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the tag to set allowance for, e.g. <code>link</code> or <code>iframe</code>.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>allowed</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">true: can use tag, false: can not use tag.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+
+    
+        <h3 class="subsection-title">Type Definitions</h3>
+
+        
+                
+<h4 class="name" id="~allowUnknownHtmlTags">allowUnknownHtmlTags</h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="DOMCleanup.js.html">DOMCleanup.js</a>, <a href="DOMCleanup.js.html#line11">line 11</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>on</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Allow unknown HTML tags</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>off</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Do not allow unknown HTML tags (default)</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<div class="description usertext">
+    set allowance for unknown HTML tags, exposed as <code>JQL.allowUnknownHtmlTags</code><br>See also <a href="module-JQL_XHelpers_HtmlTags.html">module HtmlTags</a>
+</div>
+
+
+
+
+
+
+
+
+            
+    
+
+    
+</article>
+
+</section>
 
 
 

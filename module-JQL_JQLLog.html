@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>JQL/JQLLog - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-JQL.html">JQL</a><ul class='methods'><li data-type='method'><a href="module-JQL.html#~ExtendedNodeList">ExtendedNodeList</a></li><li data-type='method'><a href="module-JQL.html#~JQL/allowUnknownHtmlTags">JQL/allowUnknownHtmlTags</a></li><li data-type='method'><a href="module-JQL.html#~JQL/debugLog">JQL/debugLog</a></li><li data-type='method'><a href="module-JQL.html#~JQL/insertPositions">JQL/insertPositions</a></li><li data-type='method'><a href="module-JQL.html#~JQL/log">JQL/log</a></li><li data-type='method'><a href="module-JQL.html#~JQL/logElementCreationErrors">JQL/logElementCreationErrors</a></li><li data-type='method'><a href="module-JQL.html#~JQL/node">JQL/node</a></li><li data-type='method'><a href="module-JQL.html#~JQL/nodes">JQL/nodes</a></li><li data-type='method'><a href="module-JQL.html#~JQL/popup">JQL/popup</a></li><li data-type='method'><a href="module-JQL.html#~JQL/setStyle">JQL/setStyle</a></li><li data-type='method'><a href="module-JQL.html#~JQL/setStyling4Log">JQL/setStyling4Log</a></li><li data-type='method'><a href="module-JQL.html#~JQL/setSystemLogActiveState">JQL/setSystemLogActiveState</a></li><li data-type='method'><a href="module-JQL.html#~JQL/setTagPermission">JQL/setTagPermission</a></li><li data-type='method'><a href="module-JQL.html#~JQL/time">JQL/time</a></li><li data-type='method'><a href="module-JQL.html#~JQL/virtual">JQL/virtual</a></li><li data-type='method'><a href="module-JQL.html#~text">text</a></li></ul></li><li><a href="module-JQL_JQLLog.html">JQL/JQLLog</a><ul class='methods'><li data-type='method'><a href="module-JQL_JQLLog.html#.reversed">reversed</a></li><li data-type='method'><a href="module-JQL_JQLLog.html#.toConsole">toConsole</a></li><li data-type='method'><a href="module-JQL_JQLLog.html#~Log">Log</a></li><li data-type='method'><a href="module-JQL_JQLLog.html#~setStyling4Log">setStyling4Log</a></li></ul></li><li><a href="module-JQL_JQLMethods.html">JQL/JQLMethods</a><ul class='methods'><li data-type='method'><a href="module-JQL_JQLMethods.html#.addClass">addClass</a></li><li data-type='method'><a href="module-JQL_JQLMethods.html#.append">append</a></li><li data-type='method'><a href="module-JQL_JQLMethods.html#.appendTo">appendTo</a></li><li data-type='method'><a href="module-JQL_JQLMethods.html#.assignAttrValues">assignAttrValues</a></li><li data-type='method'><a href="module-JQL_JQLMethods.html#.attr">attr</a></li><li data-type='method'><a href="module-JQL_JQLMethods.html#.computedStyle">computedStyle</a></li><li data-type='method'><a href="module-JQL_JQLMethods.html#.css">css</a></li><li data-type='method'><a href="module-JQL_JQLMethods.html#.dimensions">dimensions</a></li><li data-type='method'><a href="module-JQL_JQLMethods.html#.duplicate">duplicate</a></li><li data-type='method'><a href="module-JQL_JQLMethods.html#.each">each</a></li><li data-type='method'><a href="module-JQL_JQLMethods.html#.empty">empty</a></li><li data-type='method'><a href="module-JQL_JQLMethods.html#.find">find</a></li><li data-type='method'><a href="module-JQL_JQLMethods.html#.find$">find$</a></li><li data-type='method'><a href="module-JQL_JQLMethods.html#.first">first</a></li><li data-type='method'><a href="module-JQL_JQLMethods.html#.first$">first$</a></li><li data-type='method'><a href="module-JQL_JQLMethods.html#.getData">getData</a></li><li data-type='method'><a href="module-JQL_JQLMethods.html#.hasClass">hasClass</a></li><li data-type='method'><a href="module-JQL_JQLMethods.html#.hide">hide</a></li><li data-type='method'><a href="module-JQL_JQLMethods.html#.html">html</a></li><li data-type='method'><a href="module-JQL_JQLMethods.html#.htmlFor">htmlFor</a></li><li data-type='method'><a href="module-JQL_JQLMethods.html#.is">is</a></li><li data-type='method'><a href="module-JQL_JQLMethods.html#.isEmpty">isEmpty</a></li><li data-type='method'><a href="module-JQL_JQLMethods.html#.on">on</a></li><li data-type='method'><a href="module-JQL_JQLMethods.html#.ON">ON</a></li><li data-type='method'><a href="module-JQL_JQLMethods.html#.outerHtml">outerHtml</a></li><li data-type='method'><a href="module-JQL_JQLMethods.html#.parent">parent</a></li><li data-type='method'><a href="module-JQL_JQLMethods.html#.prepend">prepend</a></li><li data-type='method'><a href="module-JQL_JQLMethods.html#.prependTo">prependTo</a></li><li data-type='method'><a href="module-JQL_JQLMethods.html#.prop">prop</a></li><li data-type='method'><a href="module-JQL_JQLMethods.html#.remove">remove</a></li><li data-type='method'><a href="module-JQL_JQLMethods.html#.removeAttr">removeAttr</a></li><li data-type='method'><a href="module-JQL_JQLMethods.html#.removeClass">removeClass</a></li><li data-type='method'><a href="module-JQL_JQLMethods.html#.replace">replace</a></li><li data-type='method'><a href="module-JQL_JQLMethods.html#.replaceClass">replaceClass</a></li><li data-type='method'><a href="module-JQL_JQLMethods.html#.replaceMe">replaceMe</a></li><li data-type='method'><a href="module-JQL_JQLMethods.html#.setData">setData</a></li><li data-type='method'><a href="module-JQL_JQLMethods.html#.show">show</a></li><li data-type='method'><a href="module-JQL_JQLMethods.html#.single">single</a></li><li data-type='method'><a href="module-JQL_JQLMethods.html#.style">style</a></li><li data-type='method'><a href="module-JQL_JQLMethods.html#.text">text</a></li><li data-type='method'><a href="module-JQL_JQLMethods.html#.toDOM">toDOM</a></li><li data-type='method'><a href="module-JQL_JQLMethods.html#.toggleAttr">toggleAttr</a></li><li data-type='method'><a href="module-JQL_JQLMethods.html#.toggleClass">toggleClass</a></li><li data-type='method'><a href="module-JQL_JQLMethods.html#.toggleStyleFragments">toggleStyleFragments</a></li><li data-type='method'><a href="module-JQL_JQLMethods.html#.toNodeList">toNodeList</a></li><li data-type='method'><a href="module-JQL_JQLMethods.html#.val">val</a></li></ul></li><li><a href="module-JQL_Popup.html">JQL/Popup</a><ul class='methods'><li data-type='method'><a href="module-JQL_Popup.html#.popupFactory">popupFactory</a></li><li data-type='method'><a href="module-JQL_Popup.html#~create">create</a></li><li data-type='method'><a href="module-JQL_Popup.html#~createTimed">createTimed</a></li><li data-type='method'><a href="module-JQL_Popup.html#~remove">remove</a></li><li data-type='method'><a href="module-JQL_Popup.html#~removeModal">removeModal</a></li></ul></li><li><a href="module-JQL_XHelpers_Attributes.html">JQL/XHelpers/Attributes</a></li><li><a href="module-JQL_XHelpers_DOM.html">JQL/XHelpers/DOM</a><ul class='methods'><li data-type='method'><a href="module-JQL_XHelpers_DOM.html#~createElementFromHtmlString">createElementFromHtmlString</a></li><li data-type='method'><a href="module-JQL_XHelpers_DOM.html#~element2DOM">element2DOM</a></li></ul></li><li><a href="module-JQL_XHelpers_ExtensionHelpers.html">JQL/XHelpers/ExtensionHelpers</a><ul class='methods'><li data-type='method'><a href="module-JQL_XHelpers_ExtensionHelpers.html#~getAllDataAttributeValues">getAllDataAttributeValues</a></li><li data-type='method'><a href="module-JQL_XHelpers_ExtensionHelpers.html#~hex2Full">hex2Full</a></li><li data-type='method'><a href="module-JQL_XHelpers_ExtensionHelpers.html#~hex2RGBA">hex2RGBA</a></li><li data-type='method'><a href="module-JQL_XHelpers_ExtensionHelpers.html#~initializePrototype">initializePrototype</a></li><li data-type='method'><a href="module-JQL_XHelpers_ExtensionHelpers.html#~isObjectAndNotArray">isObjectAndNotArray</a></li><li data-type='method'><a href="module-JQL_XHelpers_ExtensionHelpers.html#~isVisible">isVisible</a></li><li data-type='method'><a href="module-JQL_XHelpers_ExtensionHelpers.html#~loop">loop</a></li><li data-type='method'><a href="module-JQL_XHelpers_ExtensionHelpers.html#~time">time</a></li><li data-type='method'><a href="module-JQL_XHelpers_ExtensionHelpers.html#~toDashedNotation">toDashedNotation</a></li><li data-type='method'><a href="module-JQL_XHelpers_ExtensionHelpers.html#~truncateHtmlStr">truncateHtmlStr</a></li></ul></li><li><a href="module-JQL_XHelpers_HandlerFactory.html">JQL/XHelpers/HandlerFactory</a><ul class='methods'><li data-type='method'><a href="module-JQL_XHelpers_HandlerFactory.html#~addListenerIfNotExisting">addListenerIfNotExisting</a></li><li data-type='method'><a href="module-JQL_XHelpers_HandlerFactory.html#~createHandlerForHID">createHandlerForHID</a></li><li data-type='method'><a href="module-JQL_XHelpers_HandlerFactory.html#~metaHandler">metaHandler</a></li></ul></li><li><a href="module-JQL_XHelpers_HtmlCleanup.html">JQL/XHelpers/HtmlCleanup</a><ul class='methods'><li data-type='method'><a href="module-JQL_XHelpers_HtmlCleanup.html#~logElementCreationErrors">logElementCreationErrors</a></li><li data-type='method'><a href="module-JQL_XHelpers_HtmlCleanup.html#~setTagPermission">setTagPermission</a></li></ul></li><li><a href="module-JQL_XHelpers_HtmlTags.html">JQL/XHelpers/HtmlTags</a><ul class='methods'><li data-type='method'><a href="module-JQL_XHelpers_HtmlTags.html#.isAllowed">isAllowed</a></li><li data-type='method'><a href="module-JQL_XHelpers_HtmlTags.html#~setTagPermission">setTagPermission</a></li></ul></li><li><a href="module-JQL_XHelpers_Styling.html">JQL/XHelpers/Styling</a><ul class='methods'><li data-type='method'><a href="module-JQL_XHelpers_Styling.html#~changeCssStyleRule">changeCssStyleRule</a></li></ul></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">JQL/JQLLog</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        
+            
+        
+    
+</header>
+
+<article>
+    
+        <div class="container-overview">
+        
+            
+                <div class="description usertext">A small module for logging in a fixed positioned JQLLog box<br>Every line logged is preceded by the time it is logged (granularity: milliseconds)The styling of the logbox happens via a <code>&lt;style></code> element, added to theheader of the enclosing document.</div>
+            
+
+            
+                
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="JQLLog.js.html">JQLLog.js</a>, <a href="JQLLog.js.html#line3">line 3</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+        
+        </div>
+    
+
+    
+
+    
+
+    
+    
+    
+
+     
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id=".stylingDefault4Log"><span class="type-signature">(static, constant) </span>stylingDefault4Log<span class="type-signature"> :Object.&lt;string, Object.&lt;string, (string|number)>></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="JQLLog.js.html">JQLLog.js</a>, <a href="JQLLog.js.html#line83">line 83</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    The default styling to use for the logbox. This is used by <a href="module-JQL_JQLLog.html#~setStyling4Log">setStyling4Log</a>.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Object.&lt;string, Object.&lt;string, (string|number)>></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="~debugLog"><span class="type-signature">(inner, constant) </span>debugLog<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="JQLLog.js.html">JQLLog.js</a>, <a href="JQLLog.js.html#line27">line 27</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>debugLog.isVisible</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Is the JQLLog box visible?</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>debugLog.on</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Activate logging for JQL.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>debugLog.off</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Deactivate logging for JQL.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>debugLog.remove</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Deactivate logging for JQL and remove <code>div#logBox</code>.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>debugLog.hide</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Hide the JQLLog box.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>debugLog.show</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Show the JQLLog box.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>debugLog.toConsole</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Log to console.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>debugLog.reversed</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Log top to bottom or latest first.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>debugLog.clear</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the log box.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>debugLog.isOn</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">(getter) is logging on?</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<div class="description usertext">
+    Some utility methods for logging
+</div>
+
+
+
+
+
+
+
+
+        
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id=".reversed"><span class="type-signature">(static) </span>reversed<span class="signature">(reverse)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="JQLLog.js.html">JQLLog.js</a>, <a href="JQLLog.js.html#line70">line 70</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    Change direction of log entries<br>Exposed as: <code>debugLog.reversed</code>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>reverse</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">latest last (false) or latest first (true) (default true)</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".toConsole"><span class="type-signature">(static) </span>toConsole<span class="signature">(console)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="JQLLog.js.html">JQLLog.js</a>, <a href="JQLLog.js.html#line53">line 53</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    Log everything to the browser console<br>Exposed as: <code>debugLog.toConsole</code><br><b>Note</b>: this possibly destroys an alreay created<code>div#logBox</code> in the document if set to true.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>console</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">log to browser console (true) or not (false, default)</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="~Log"><span class="type-signature">(inner) </span>Log<span class="signature">(&hellip;args)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="JQLLog.js.html">JQLLog.js</a>, <a href="JQLLog.js.html#line197">line 197</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    Create JQLLog entry/entries, preceded with the time of logging (millisecond granularity).<br>If the local [useLogging] boolean is false, nothing is logged<br> in JQL exposed as <code>JQL.log</code>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>args</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                    &lt;repeatable><br>
+                
+                </td>
+            
+
+            
+
+            <td class="description last">string(s) or Object(s) to print in the JQLLog box<br><b>Note</b> Objects are converted to JSON representation</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="~setStyling4Log"><span class="type-signature">(inner) </span>setStyling4Log<span class="signature">(styles)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="JQLLog.js.html">JQLLog.js</a>, <a href="JQLLog.js.html#line167">line 167</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    Add style classes for the JQLLog box to a custom css style element.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>styles</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">style rules Object, e.g. <code>&#123;margin: `0`, color: `green`&#125;</code>.Default styles are in <code>stylingDefault4Log</code>header of the document in which JQL is used). Default is 'JQLCustomCSS'.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Wed Dec 01 2021 11:33:27 GMT+0100 (Midden-Europese standaardtijd) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>
