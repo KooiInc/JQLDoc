@@ -80,7 +80,6 @@ import handlerFactory from "./HandlerFactory.js";
  */
 
 const empty = el => el &amp;&amp; (el.textContent = "");
-
 /**
  * Set data-attribute for each element of the element collection of the ExtendedNodeList.
  * The attributes must be key-value pairs.
@@ -94,7 +93,6 @@ const setData = (el, keyValuePairs) => {
   el &amp;&amp; isObjectAndNotArray(keyValuePairs) &amp;&amp;
   Object.entries(keyValuePairs).forEach(([key, value]) => el.dataset[key] = value);
 };
-
 /**
  * Style each element of the element collection of the ExtendedNodeList
  * instance &lt;i>within a custom style sheet&lt;/i>, using an intermediate class
@@ -136,7 +134,6 @@ const css = (el, keyOrKvPairs, value) => {
   setStyle(`.${nwClass}`, keyOrKvPairs);
   el.classList.add(nwClass);
 };
-
 /**
  * Set attribute or property values for each element of the element collection of the ExtendedNodeList.
  * of the ExtendedNodeList instance
@@ -158,7 +155,6 @@ const assignAttrValues = (el, keyValuePairs) => {
     }
   });
 };
-
 const allMethods = {
   straigthLoops: {
     /**
@@ -167,7 +163,6 @@ const allMethods = {
      * @param className {string} the class name to toggle (eg 'hidden')
      */
     toggleClass: (el, className) => el.classList.toggle(className),
-
     /**
      * Toggle individual style properties for each element of the element collection of the ExtendedNodeList.
      * Properties must be key-value pairs
@@ -190,7 +185,6 @@ const allMethods = {
 
         el.style[key] = `${el.style[key]}` === `${value}` ? "" : value;
       }),
-
     /**
      * Remove some attribute from each element of the element collection of the ExtendedNodeList.
      * @memberof module:JQL/JQLMethods
@@ -198,7 +192,6 @@ const allMethods = {
      * @param name {string} the attribute name
      */
     removeAttr: (el, name) => el &amp;&amp; el.removeAttribute(name),
-
     /**
      * Toggle attribute [name] with [value] for each element of the element collection of the ExtendedNodeList.
      * @memberof module:JQL/JQLMethods
@@ -212,13 +205,11 @@ const allMethods = {
         : el.setAttribute(name, value),
 
     empty,
-
     /**
      * Alias for empty. Clear content of all elements of the collection
      * @memberof module:JQL/JQLMethods
      */
     clear: empty,
-
     /**
      * Swap [classname] with [...nwClassnames] for each element of the element collection of the ExtendedNodeList.
      * Enables replacing a class name with one or more class name(s)
@@ -231,7 +222,6 @@ const allMethods = {
       el.classList.remove(className);
       nwClassNames.forEach(name => el.classList.add(name))
     },
-
     /**
      * Remove [classNames] from for each element of the element collection of the ExtendedNodeList.
      * Class names can be one or more strings.
@@ -241,7 +231,6 @@ const allMethods = {
      */
     removeClass: (el, ...classNames) =>
       classNames.forEach(cn => el.classList.remove(cn)),
-
     /**
      * Add [classNames] to each element of the element collection of the ExtendedNodeList.
      * Class names can be one or more strings
@@ -250,25 +239,20 @@ const allMethods = {
      * @param classNames {...string} one or more class names
      */
     addClass: (el, ...classNames) => el &amp;&amp; classNames.forEach(cn => el.classList.add(cn)),
-
     /**
      * Show each element of the element collection of the ExtendedNodeList.
      * @memberof module:JQL/JQLMethods
 
      */
     show: el => el.style.display = ``,
-
     /**
      * Hide each element of the element collection of the ExtendedNodeList.
      * @memberof module:JQL/JQLMethods
 
      */
     hide: el => el.style.display = `none`,
-
     setData,
-
     assignAttrValues,
-
     /**
      * Get or set attributes for each element of the element collection of the ExtendedNodeList
      * of the ExtendedNodeList instance
@@ -311,7 +295,6 @@ const allMethods = {
         return el.setAttribute(key, value);
       });
     },
-
     /**
      * Style each element of the element collection of the ExtendedNodeList &lt;i>inline&lt;/i>,
      * so &lt;code>&amp;lt;div style="[the style from parameters]">&lt;/code>.
@@ -373,7 +356,6 @@ const allMethods = {
      * @param cb {function} lambda to execute on each element of the collection
      */
     each: (extCollection, cb) => loop(extCollection, cb),
-
     /**
      * Remove each collection element from the DOM tree
      * @memberof module:JQL/JQLMethods
@@ -388,7 +370,6 @@ const allMethods = {
       }
       loop(extCollection, remover);
     },
-
     /**
      * Get computed style for a css property of the first element of the ExtendedNodeList instance
      * @memberof module:JQL/JQLMethods
@@ -396,7 +377,6 @@ const allMethods = {
      * @returns {CSSStyleDeclaration}
      */
     computedStyle: (extCollection, property) => extCollection.first() &amp;&amp; getComputedStyle(extCollection.first())[property],
-
     /**
      * Get the value of a data-attribute for the first element of the ExtendedNodeList instance
      * @memberof module:JQL/JQLMethods
@@ -406,14 +386,12 @@ const allMethods = {
      */
     getData: (extCollection, dataAttribute, valueWhenFalsy) => extCollection.first() &amp;&amp;
       extCollection.first().dataset &amp;&amp; extCollection.first().dataset[dataAttribute] || valueWhenFalsy,
-
     /**
      * Is the collection of the current (implicit) ExtendedNodeList instance empty?
      * @memberof module:JQL/JQLMethods
      * @returns {boolean}
      */
     isEmpty: extCollection => extCollection.collection.length &lt; 1,
-
     /**
      * Checks the values of pseudo selectors :hidden, :visible or :disabled
      * &lt;br>&lt;b>Todo&lt;/b>: really useful?
@@ -440,7 +418,6 @@ const allMethods = {
           return true;
       }
     },
-
     /**
      * Checks if (one of) [classNames] is assigned to the first
      * element of the ExtendedNodeList instance
@@ -453,7 +430,6 @@ const allMethods = {
       return extCollection.isEmpty() || !firstElem.classList.length
         ? false : classNames.find(cn => firstElem.classList.contains(cn)) || false;
     },
-
     /**
      * Replace a child in the collection of an ExtendedNodeList instance
      * with something else
@@ -484,7 +460,6 @@ const allMethods = {
 
       return extCollection;
     },
-
     /**
      * Replace the collection of an ExtendedNodeList instance with something else
      * @memberof module:JQL/JQLMethods
@@ -498,7 +473,6 @@ const allMethods = {
       extCollection.parent().replace(extCollection, newChild)
       return newChild;
     },
-
     /**
      * Get or set the value of (the first element of)
      * the ExtendedNodeList instance, where the first
@@ -522,7 +496,6 @@ const allMethods = {
         return firstElem.value;
       }
     },
-
     /**
      * Get the direct parent node of the first element of the ExtendedNodeList instance
      * @memberof module:JQL/JQLMethods
@@ -530,7 +503,6 @@ const allMethods = {
      */
     parent: extCollection => !extCollection.isEmpty() &amp;&amp; extCollection.first().parentNode &amp;&amp;
       new extCollection.constructor(extCollection.first().parentNode) || extCollection,
-
     /**
      * Appends one ore more elements to each element of the instance collection (for real, in the DOM tree).
      * &lt;br>If elems2Append consists of html string(s), they should contain &lt;i>valid&lt;/i> html
@@ -570,7 +542,6 @@ const allMethods = {
 
       return extCollection;
     },
-
     /**
      * Injects an element at the start of each element of the collection of an instance of ExtendedNodeList.
      * &lt;br>When [elem] is a html string, it should be valid html, otherwise nothing is prepended obviously
@@ -612,7 +583,6 @@ const allMethods = {
 
       return extCollection;
     },
-
     /**
      * Appends the collection of one ExtendedNodeList instance to another instance,
      * so injects the element(s) of [extCollection] to each element of [extCollection2AppendTo]
@@ -628,7 +598,6 @@ const allMethods = {
       }
       return extCollection2AppendTo.append(extCollection);
     },
-
     /**
      * Prepends the collection of one ExtendedNodeList instance to each element of another instance,
      * so injects the element(s) of [extCollection] to each element of [extCollection2AppendTo]
@@ -645,7 +614,6 @@ const allMethods = {
 
       return extCollection2PrependTo.prepend(extCollection);
     },
-
     /**
      * Retrieves a single element from an instance of ExtendedNodeList
      * and returns a new ExtendedNodeList instance from that element
@@ -666,7 +634,6 @@ const allMethods = {
         return extCollection;
       }
     },
-
     /**
      * Retrieve the extCollection instance collection as a Nodelist. It may
      * be a way to duplicate a collection of nodes (see example).
@@ -705,7 +672,6 @@ const allMethods = {
 
       return virtual.childNodes;
     },
-
     /**
      * Duplicate an ExtendedNodeList instance (to memory (default) or
      * to DOM. The elements within the instance are cloned (and their id's removed)
@@ -740,7 +706,6 @@ const allMethods = {
       const clonedCollection = extCollection.toNodeList();
       return toDOM ? _$(clonedCollection) : _$.virtual(clonedCollection);
     },
-
     /**
      * Write an instance of ExtendedNodeList to the DOM ([root] or document.body).
      * &lt;br>&lt;b>Note&lt;/b>: this works only for virtual instances (so, existing in memory) and
@@ -756,7 +721,6 @@ const allMethods = {
       }
       return extCollection;
     },
-
     /**
      * Retrieve the first element of the ExtendedNodeList instance collection
      * @memberof module:JQL/JQLMethods
@@ -772,7 +736,6 @@ const allMethods = {
       }
       return undefined;
     },
-
     /**
      * Retrieve first element from the collection of the ExtendedNodeList instance
      * and return that as a new ExtendedNodeList instance
@@ -782,7 +745,6 @@ const allMethods = {
      * @returns {ExtendedNodeList|undefined} ExtendedNodeList instance or nothing
      */
     first$: (extCollection, indexOrSelector) => extCollection.single(indexOrSelector),
-
     /**
      * Find one or more elements within the ExtendedNodeList instance collection
      * using a css query (e.g. '.someClass')
@@ -809,7 +771,6 @@ const allMethods = {
         .filter(el => el &amp;&amp; el instanceof HTMLElement);
       return found.length &amp;&amp; _$.virtual(found);
     },
-
     /**
      * Get a property/attribute value of first element from
      * the ExtendedNodeList instance collection or set it for each element of
@@ -832,7 +793,6 @@ const allMethods = {
 
       return extCollection;
     },
-
     /**
      * Add handler lambda for an ExtendedNodeList instance.
      * &lt;br>A handler id is created if applicable (addHandlerId)
@@ -849,7 +809,6 @@ const allMethods = {
 
       return extCollection;
     },
-
     /**
      * Get (inner-) html of the first element in the
      * collection of [extCollection] or set html for each
@@ -880,14 +839,12 @@ const allMethods = {
 
       return extCollection;
     },
-
     /**
      * Retrieves outer html for the first element of the ExtendedNodeList instance
      * @memberof module:JQL/JQLMethods
      * @returns {string|undefined}
      */
     outerHtml: extCollection => (extCollection.first() || {outerHTML: undefined}).outerHTML,
-
     /**
      * Sets/adds/removes html for an element within the collection
      * of the ExtendedNodeList instance (identified with a css query).
@@ -916,14 +873,12 @@ const allMethods = {
       }
       return extCollection;
     },
-
     /**
      * retrieve the current dimensions of the first element in the collection
      * @memberof module:JQL/JQLMethods
      * @returns {DOMRect | undefined}
      */
     dimensions: extCollection => extCollection.first()?.getBoundingClientRect(),
-
     /**
      * Create event handler lambda(s)
      * @memberof module:JQL/JQLMethods
@@ -939,7 +894,6 @@ const allMethods = {
 
       return extCollection;
     },
-
     /**
      * Add one or multiple handler lambda(s) for event [type] and
      * the ExtendedNodeList instance
@@ -972,7 +926,7 @@ export default allMethods;</code></pre>
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Tue Dec 07 2021 11:53:01 GMT+0100 (Midden-Europese standaardtijd) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Tue Dec 07 2021 13:30:11 GMT+0100 (Midden-Europese standaardtijd) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
